@@ -1,10 +1,10 @@
 with token_config as (
   select
-    'FET' as token_symbol,
-    'Fetch.ai' as token_name,
+    '{{token_symbol}}' as token_symbol,
+    '{{token_name}}' as token_name,
     'ethereum' as chain_name,
-    lower('0xaea46a60368a7bd060eec7df8cba43b7ef41ad85') as contract_address,
-    'FET' as price_symbol,
+    lower('{{contract_address}}') as contract_address,
+    '{{price_symbol}}' as price_symbol,
     45 as lookback_days,
     10 as min_active_days,
     1000 as min_net_flow_usd
