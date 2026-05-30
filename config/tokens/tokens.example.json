@@ -1,0 +1,16 @@
+{
+  "version": "phase1-v1",
+  "chain_name": "ethereum",
+  "tokens": [
+    {
+      "token_symbol": "ETH",
+      "token_name": "Ether",
+      "contract_address": "0x0000000000000000000000000000000000000000",
+      "price_symbol": "ETH",
+      "lookback_days": 90,
+      "min_active_days": 3,
+      "min_net_flow_usd": 10000,
+      "is_enabled": true
+    }
+  ]
+}

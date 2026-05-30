@@ -1,0 +1,169 @@
+{
+  "version": "phase1-v1",
+  "description": "Phase 1 semantic layer contract derived from the four unified SQL outputs.",
+  "datasets": [
+    {
+      "name": "token_overview_daily",
+      "source_sql": "sql/templates/eth/01_token_candidate_pool.sql",
+      "grain": [
+        "token_symbol",
+        "chain_name",
+        "as_of_date"
+      ],
+      "consumers": [
+        "frontend_summary",
+        "frontend_charts"
+      ],
+      "fields": [
+        { "name": "token_symbol", "type": "string", "required": true },
+        { "name": "token_name", "type": "string", "required": true },
+        { "name": "chain_name", "type": "string", "required": true },
+        { "name": "as_of_date", "type": "date", "required": true },
+        { "name": "token_price_usd", "type": "number", "required": false },
+        { "name": "eligible_address_count", "type": "integer", "required": true },
+        { "name": "candidate_address_count", "type": "integer", "required": true },
+        { "name": "candidate_net_position_token", "type": "number", "required": true },
+        { "name": "candidate_net_flow_usd", "type": "number", "required": true },
+        { "name": "candidate_avg_net_flow_usd", "type": "number", "required": true },
+        { "name": "candidate_net_flow_usd_p80", "type": "number", "required": true }
+      ]
+    },
+    {
+      "name": "address_feature_snapshot",
+      "source_sql": "sql/templates/eth/02_token_cost_basis.sql",
+      "grain": [
+        "token_symbol",
+        "chain_name",
+        "address_key"
+      ],
+      "consumers": [
+        "frontend_top_addresses",
+        "ai_address_profile"
+      ],
+      "fields": [
+        { "name": "token_symbol", "type": "string", "required": true },
+        { "name": "token_name", "type": "string", "required": true },
+        { "name": "chain_name", "type": "string", "required": true },
+        { "name": "as_of_date", "type": "date", "required": true },
+        { "name": "address_key", "type": "string", "required": true },
+        { "name": "active_days", "type": "integer", "required": true },
+        { "name": "first_buy_day", "type": "date", "required": false },
+        { "name": "hold_days_est", "type": "integer", "required": false },
+        { "name": "net_position_token", "type": "number", "required": true },
+        { "name": "net_flow_usd", "type": "number", "required": true },
+        { "name": "avg_buy_price_usd", "type": "number", "required": false },
+        { "name": "token_price_usd", "type": "number", "required": false },
+        { "name": "position_cost_usd_est", "type": "number", "required": false },
+        { "name": "position_value_usd", "type": "number", "required": false },
+        { "name": "unrealized_pnl_usd", "type": "number", "required": false },
+        { "name": "unrealized_pnl_pct", "type": "number", "required": false }
+      ]
+    },
+    {
+      "name": "address_feature_timeline",
+      "source_sql": "sql/templates/eth/03_token_position_validation.sql",
+      "grain": [
+        "token_symbol",
+        "chain_name",
+        "address_key",
+        "as_of_date"
+      ],
+      "consumers": [
+        "frontend_validation",
+        "future_behavior_analysis"
+      ],
+      "fields": [
+        { "name": "token_symbol", "type": "string", "required": true },
+        { "name": "token_name", "type": "string", "required": true },
+        { "name": "chain_name", "type": "string", "required": true },
+        { "name": "as_of_date", "type": "date", "required": true },
+        { "name": "address_key", "type": "string", "required": true },
+        { "name": "active_days", "type": "integer", "required": true },
+        { "name": "first_buy_day", "type": "date", "required": false },
+        { "name": "hold_days_est", "type": "integer", "required": false },
+        { "name": "net_position_token", "type": "number", "required": true },
+        { "name": "net_flow_usd", "type": "number", "required": true },
+        { "name": "avg_buy_price_usd", "type": "number", "required": false },
+        { "name": "token_price_usd", "type": "number", "required": false },
+        { "name": "position_cost_usd_est", "type": "number", "required": false },
+        { "name": "position_value_usd", "type": "number", "required": false },
+        { "name": "unrealized_pnl_usd", "type": "number", "required": false },
+        { "name": "unrealized_pnl_pct", "type": "number", "required": false }
+      ]
+    },
+    {
+      "name": "token_pnl_distribution",
+      "source_sql": "sql/templates/eth/04_token_pnl_snapshot.sql",
+      "grain": [
+        "token_symbol",
+        "chain_name",
+        "as_of_date",
+        "pnl_bucket"
+      ],
+      "consumers": [
+        "frontend_pnl_chart"
+      ],
+      "fields": [
+        { "name": "token_symbol", "type": "string", "required": true },
+        { "name": "token_name", "type": "string", "required": true },
+        { "name": "chain_name", "type": "string", "required": true },
+        { "name": "as_of_date", "type": "date", "required": true },
+        { "name": "pnl_bucket", "type": "string", "required": true },
+        { "name": "pnl_bucket_order", "type": "integer", "required": true },
+        { "name": "address_count", "type": "integer", "required": true },
+        { "name": "address_share", "type": "number", "required": true },
+        { "name": "avg_unrealized_pnl_pct", "type": "number", "required": true },
+        { "name": "median_unrealized_pnl_pct", "type": "number", "required": true },
+        { "name": "total_position_value_usd", "type": "number", "required": true },
+        { "name": "total_unrealized_pnl_usd", "type": "number", "required": true },
+        { "name": "avg_hold_days", "type": "number", "required": true }
+      ]
+    }
+  ],
+  "ai_profile_input_fields": [
+    "token_symbol",
+    "token_name",
+    "chain_name",
+    "as_of_date",
+    "address_key",
+    "active_days",
+    "first_buy_day",
+    "hold_days_est",
+    "net_position_token",
+    "net_flow_usd",
+    "avg_buy_price_usd",
+    "token_price_usd",
+    "position_cost_usd_est",
+    "position_value_usd",
+    "unrealized_pnl_usd",
+    "unrealized_pnl_pct"
+  ],
+  "frontend_modules": [
+    {
+      "name": "token_summary",
+      "datasets": [
+        "token_overview_daily",
+        "address_feature_snapshot"
+      ]
+    },
+    {
+      "name": "token_charts",
+      "datasets": [
+        "token_overview_daily",
+        "token_pnl_distribution"
+      ]
+    },
+    {
+      "name": "token_top_addresses",
+      "datasets": [
+        "address_feature_snapshot"
+      ]
+    },
+    {
+      "name": "token_address_profiles",
+      "datasets": [
+        "address_feature_snapshot"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+# secrets and local env
+.env
+.env.*
+!.env.example
+
+# editor and OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+.obsidian/
+
+# node / frontend
+node_modules/
+.next/
+dist/
+build/
+coverage/
+
+# python / backend
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+.python-version
+
+# logs
+*.log
+
+# local database and cache
+*.sqlite
+*.sqlite3
+*.db
+.cache/
+
+# local data outputs
+data/raw/*
+data/processed/*
+data/features/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/features/.gitkeep
+
+# optional local notes and temp files
+*.tmp
+*.temp
+*.bak
