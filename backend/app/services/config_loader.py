@@ -11,7 +11,7 @@ REQUIRED_TOKEN_FIELDS = [
     "token_name",
     "chain_name",
     "contract_address",
-    "price_symbol",
+    "price_contract_address",
     "lookback_days",
     "min_active_days",
     "min_net_flow_usd",
@@ -24,7 +24,7 @@ class TokenConfig:
     token_name: str
     chain_name: str
     contract_address: str
-    price_symbol: str
+    price_contract_address: str
     lookback_days: int
     min_active_days: int
     min_net_flow_usd: float
@@ -41,7 +41,7 @@ class TokenConfig:
             token_name=str(payload["token_name"]),
             chain_name=str(payload["chain_name"]),
             contract_address=str(payload["contract_address"]).lower(),
-            price_symbol=str(payload["price_symbol"]),
+            price_contract_address=str(payload["price_contract_address"]).lower(),
             lookback_days=int(payload["lookback_days"]),
             min_active_days=int(payload["min_active_days"]),
             min_net_flow_usd=float(payload["min_net_flow_usd"]),

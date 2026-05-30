@@ -190,6 +190,8 @@
 - `as_of_date`：该行数据对应的统计日期，按天
 - `address_key`：标准化后的地址主键，小写 EVM 地址
 
+价格配置统一通过 `price_contract_address` 管理；ETH/WETH 场景使用 WETH 合约地址作为价格锚点，避免 `prices.usd` 中 `symbol = 'ETH'` 带来的口径歧义。
+
 ### 3.2 行为字段
 
 - `active_days`：在观察窗口内有过该 token 行为的活跃天数
@@ -514,10 +516,12 @@ Y 轴可选：
 - `token_symbol`
 - `token_name`
 - `contract_address`
-- `price_symbol`
+- `price_contract_address`
 - `lookback_days`
 - `min_active_days`
 - `min_net_flow_usd`
+
+其中 ETH/WETH 场景统一填写 WETH 合约地址，其他 ERC-20 默认填写自身合约地址作为取价锚点。
 
 ### 8.3 换新 ETH token 时不应变化的部分
 

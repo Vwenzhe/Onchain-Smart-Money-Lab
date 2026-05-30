@@ -4,7 +4,7 @@ with token_config as (
     '{{token_name}}' as token_name,
     'ethereum' as chain_name,
     lower('{{contract_address}}') as contract_address,
-    '{{price_symbol}}' as price_symbol,
+    lower('{{price_contract_address}}') as price_contract_address,
     45 as lookback_days,
     10 as min_active_days,
     1000 as min_net_flow_usd
@@ -14,7 +14,7 @@ raw_transfers as (
     cfg.token_symbol,
     cfg.token_name,
     cfg.chain_name,
-    cfg.price_symbol,
+    cfg.price_contract_address,
     date_trunc('day', t.block_time) as as_of_date,
     lower(concat('0x', to_hex(t."from"))) as from_address_key,
     lower(concat('0x', to_hex(t."to"))) as to_address_key,
@@ -31,7 +31,7 @@ normalized_flows as (
     token_symbol,
     token_name,
     chain_name,
-    price_symbol,
+    price_contract_address,
     as_of_date,
     to_address_key as address_key,
     amount_token as flow_token,
@@ -45,7 +45,7 @@ normalized_flows as (
     token_symbol,
     token_name,
     chain_name,
-    price_symbol,
+    price_contract_address,
     as_of_date,
     from_address_key as address_key,
     -amount_token as flow_token,
@@ -58,7 +58,7 @@ address_snapshot as (
     token_symbol,
     token_name,
     chain_name,
-    price_symbol,
+    price_contract_address,
     max(as_of_date) as as_of_date,
     address_key,
     count(distinct as_of_date) as active_days,
@@ -97,7 +97,8 @@ latest_price as (
     max_by(p.price, p.minute) as token_price_usd
   from token_config cfg
   join prices.usd p
-    on p.symbol = cfg.price_symbol
+    on p.blockchain = cfg.chain_name
+   and p.contract_address = from_hex(substring(cfg.price_contract_address, 3))
   where p.minute >= date_add('day', -cfg.lookback_days, now())
   group by 1, 2
 )

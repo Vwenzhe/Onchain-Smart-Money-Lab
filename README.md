@@ -56,6 +56,7 @@ AI-driven onchain smart money research and showcase platform.
 
 1. `配置层`
    - 管理 token 元信息和分析参数
+   - 价格统一通过 `price_contract_address` 取数，ETH/WETH 场景固定使用 WETH 合约地址，不再依赖 `symbol=ETH`
    - 目标是新增 token 时尽量只改配置
 2. `分析层`
    - 由统一风格的 SQL 模板组成

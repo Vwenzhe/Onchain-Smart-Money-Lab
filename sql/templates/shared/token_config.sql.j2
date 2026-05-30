@@ -4,7 +4,7 @@ token_config as (
     '{{ token.token_name }}' as token_name,
     '{{ token.chain_name }}' as chain_name,
     lower('{{ token.contract_address }}') as contract_address,
-    '{{ token.price_symbol }}' as price_symbol,
+    lower('{{ token.price_contract_address }}') as price_contract_address,
     {{ token.lookback_days }} as lookback_days,
     {{ token.min_active_days }} as min_active_days,
     {{ token.min_net_flow_usd }} as min_net_flow_usd

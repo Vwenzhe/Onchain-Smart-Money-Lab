@@ -18,7 +18,7 @@ def build_query_parameters(token) -> dict[str, str]:
         "token_symbol": token.token_symbol,
         "token_name": token.token_name,
         "contract_address": token.contract_address.lower(),
-        "price_symbol": token.price_symbol,
+        "price_contract_address": token.price_contract_address.lower(),
     }
 
 
@@ -60,7 +60,7 @@ def main() -> None:
 
             print(
                 f"开始执行参数化查询: {token_symbol}/{sql_file.name} "
-                f"-> query_id={query_id}, contract_address={token.contract_address}"
+                f"-> query_id={query_id}, contract_address={token.contract_address}, price_contract_address={token.price_contract_address}"
             )
             dune_client.run_parameterized_query(
                 token_symbol=token_symbol,

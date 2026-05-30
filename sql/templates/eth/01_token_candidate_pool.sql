@@ -4,7 +4,7 @@ with token_config as (
     '{{token_name}}' as token_name,
     'ethereum' as chain_name,
     lower('{{contract_address}}') as contract_address,
-    '{{price_symbol}}' as price_symbol,
+    lower('{{price_contract_address}}') as price_contract_address,
     45 as lookback_days,
     10 as min_active_days,
     1000 as min_net_flow_usd
@@ -14,7 +14,7 @@ raw_transfers as (
     cfg.token_symbol,
     cfg.token_name,
     cfg.chain_name,
-    cfg.price_symbol,
+    cfg.price_contract_address,
     cfg.lookback_days,
     cfg.min_active_days,
     cfg.min_net_flow_usd,
@@ -34,7 +34,7 @@ normalized_flows as (
     token_symbol,
     token_name,
     chain_name,
-    price_symbol,
+    price_contract_address,
     as_of_date,
     to_address_key as address_key,
     amount_token as flow_token,
@@ -48,7 +48,7 @@ normalized_flows as (
     token_symbol,
     token_name,
     chain_name,
-    price_symbol,
+    price_contract_address,
     as_of_date,
     from_address_key as address_key,
     -amount_token as flow_token,
@@ -61,7 +61,7 @@ daily_address_flow as (
     token_symbol,
     token_name,
     chain_name,
-    price_symbol,
+    price_contract_address,
     as_of_date,
     address_key,
     sum(flow_token) as net_flow_token_daily,
@@ -75,7 +75,7 @@ daily_address_state as (
     f.token_symbol,
     f.token_name,
     f.chain_name,
-    f.price_symbol,
+    f.price_contract_address,
     f.as_of_date,
     f.address_key,
     count(*) over (
@@ -100,7 +100,7 @@ eligible_daily as (
     s.token_symbol,
     s.token_name,
     s.chain_name,
-    s.price_symbol,
+    s.price_contract_address,
     s.as_of_date,
     s.address_key,
     s.active_days,
@@ -117,7 +117,7 @@ daily_thresholds as (
     token_symbol,
     token_name,
     chain_name,
-    price_symbol,
+    price_contract_address,
     as_of_date,
     count(*) as eligible_address_count,
     approx_percentile(net_flow_usd, 0.8) as candidate_net_flow_usd_p80
@@ -129,7 +129,7 @@ daily_candidates as (
     e.token_symbol,
     e.token_name,
     e.chain_name,
-    e.price_symbol,
+    e.price_contract_address,
     e.as_of_date,
     e.address_key,
     e.net_position_token,
@@ -149,7 +149,8 @@ price_daily as (
     avg(p.price) as token_price_usd
   from token_config cfg
   join prices.usd p
-    on p.symbol = cfg.price_symbol
+    on p.blockchain = cfg.chain_name
+   and p.contract_address = from_hex(substring(cfg.price_contract_address, 3))
   where p.minute >= date_add('day', -cfg.lookback_days, now())
   group by 1, 2, 3
 )

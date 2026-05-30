@@ -10,7 +10,6 @@
       "token_name": "Fetch.ai",
       "chain_name": "ethereum",
       "contract_address": "0xaea46a60368a7bd060eec7df8cba43b7ef41ad85",
-      "price_symbol": "FET",
       "lookback_days": 45,
       "min_active_days": 10,
       "min_net_flow_usd": 1000,
@@ -20,14 +19,14 @@
         "03_token_position_validation": 7607551,
         "04_token_pnl_snapshot": 7607559
       },
-      "is_enabled": true
+      "is_enabled": true,
+      "price_contract_address": "0xaea46a60368a7bd060eec7df8cba43b7ef41ad85"
     },
     {
       "token_symbol": "ETH",
       "token_name": "Ether",
       "chain_name": "ethereum",
       "contract_address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
-      "price_symbol": "ETH",
       "lookback_days": 45,
       "min_active_days": 10,
       "min_net_flow_usd": 1000,
@@ -37,14 +36,14 @@
         "03_token_position_validation": 7607551,
         "04_token_pnl_snapshot": 7607559
       },
-      "is_enabled": true
+      "is_enabled": true,
+      "price_contract_address": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
     },
     {
       "token_symbol": "PEPE",
       "token_name": "Pepe",
       "chain_name": "ethereum",
       "contract_address": "0x6982508145454ce325ddbe47a25d4ec3d2311933",
-      "price_symbol": "PEPE",
       "lookback_days": 45,
       "min_active_days": 10,
       "min_net_flow_usd": 1000,
@@ -54,7 +53,8 @@
         "03_token_position_validation": 7607551,
         "04_token_pnl_snapshot": 7607559
       },
-      "is_enabled": true
+      "is_enabled": true,
+      "price_contract_address": "0x6982508145454ce325ddbe47a25d4ec3d2311933"
     }
   ]
 }
