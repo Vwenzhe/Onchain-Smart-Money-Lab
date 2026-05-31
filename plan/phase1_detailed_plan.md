@@ -122,7 +122,7 @@ project-root/
   - `token_name`
   - `chain_name`
   - `contract_address`
-  - `price_symbol`
+  - `price_contract_address`
   - `lookback_days`
   - `min_active_days`
   - `min_net_flow_usd`

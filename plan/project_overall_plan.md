@@ -105,7 +105,7 @@ AI 驱动的链上聪明钱研究展示站
 - `lookback_days`
 - `min_active_days`
 - `min_net_flow_usd`
-- `price_symbol`
+- `price_contract_address`
 - `is_enabled`
 
 目标：
