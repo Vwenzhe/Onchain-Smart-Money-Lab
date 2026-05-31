@@ -1,0 +1,27 @@
+{
+  "version": "phase1-price-cache-v1",
+  "interval_minutes": 30,
+  "vs_currency": "usd",
+  "assets": [
+    {
+      "token_symbol": "ETH",
+      "token_name": "Ethereum",
+      "lookup_type": "coin_id",
+      "coin_id": "ethereum"
+    },
+    {
+      "token_symbol": "FET",
+      "token_name": "Fetch.ai",
+      "lookup_type": "contract_address",
+      "asset_platform_id": "ethereum",
+      "contract_address": "0xaea46a60368a7bd060eec7df8cba43b7ef41ad85"
+    },
+    {
+      "token_symbol": "PEPE",
+      "token_name": "Pepe",
+      "lookup_type": "contract_address",
+      "asset_platform_id": "ethereum",
+      "contract_address": "0x6982508145454ce325ddbe47a25d4ec3d2311933"
+    }
+  ]
+}
