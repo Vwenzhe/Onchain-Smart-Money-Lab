@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Any
 
 from backend.app.services.llm_client import LLMClient
+from backend.app.services.prompt_loader import load_prompt_text
 from backend.app.services.result_writer import write_json
 
 ALLOWED_PROFILE_LABELS = {
@@ -127,10 +128,10 @@ class AddressProfileBatchGenerator:
         return write_json(output_payload, output_path)
 
     def _load_system_prompt(self) -> str:
-        prompt_path = self.project_root / "prompts" / "address_profile" / "system_prompt.md"
-        if not prompt_path.exists():
-            raise FileNotFoundError(f"未找到 system prompt 文件: {prompt_path}")
-        return prompt_path.read_text(encoding="utf-8").strip()
+        return load_prompt_text(
+            self.project_root,
+            "prompts/address_profile/address_profile_prompt.md",
+        )
 
     def _load_input_payload(
         self,
@@ -233,16 +234,10 @@ class AddressProfileBatchGenerator:
         }
         input_json = json.dumps(prompt_payload, ensure_ascii=False, indent=2)
         return (
-            "请基于以下地址结构化特征，生成该地址的行为画像。\n\n"
-            "任务要求：\n"
-            "1. 只能依据输入字段进行判断，不得补充输入中不存在的背景信息。\n"
-            "2. 输出必须克制、可解释、基于证据。\n"
-            "3. 不允许输出无证据断言。\n"
-            "4. 不允许输出交易建议、价格预测、身份判断或绝对因果结论。\n"
-            "5. 若证据不足，请使用 `待定观察型`，并在 `risk_note` 与 `summary` 中说明不确定性。\n"
-            "6. 输出必须是单个 JSON 对象，只包含 `profile_label`、`risk_note`、`summary`。\n\n"
-            "输入数据：\n"
-            f"{input_json}"
+            "请阅读以下地址结构化快照，并生成一条地址画像。\n"
+            "所有字段内容都必须使用简体中文，不得输出英文整句。\n\n"
+            "输入 JSON：\n"
+            f"{input_json}\n"
         )
 
     def _extract_message_content(self, response: dict[str, Any]) -> str:

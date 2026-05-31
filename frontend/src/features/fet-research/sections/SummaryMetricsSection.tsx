@@ -9,19 +9,26 @@ import {
 
 import { MetricCard } from "@/components/ui/MetricCard";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { formatCompactNumber, formatCurrency, formatPercent } from "@/lib/format";
+import type { TokenViewConfig } from "@/config/tokens";
+import {
+  formatCompactNumber,
+  formatCurrency,
+  formatPercent,
+  formatTokenCurrency,
+} from "@/lib/format";
 import type { PageSummary } from "@/types/token-display";
 
 type SummaryMetricsSectionProps = {
   summary: PageSummary;
+  tokenConfig: TokenViewConfig;
 };
 
-export function SummaryMetricsSection({ summary }: SummaryMetricsSectionProps) {
+export function SummaryMetricsSection({ summary, tokenConfig }: SummaryMetricsSectionProps) {
   const cards = [
     {
       label: "当前价格",
-      value: formatCurrency(summary.token_price_usd, 4),
-      hint: "当前 FET 最新概览价格",
+      value: formatTokenCurrency(summary.token_price_usd),
+      hint: `当前 ${tokenConfig.symbol} 最新概览价格`,
       icon: <DollarSign size={18} />,
     },
     {
@@ -44,7 +51,7 @@ export function SummaryMetricsSection({ summary }: SummaryMetricsSectionProps) {
     },
     {
       label: "平均买入成本",
-      value: formatCurrency(summary.avg_buy_price_usd_weighted, 4),
+      value: formatTokenCurrency(summary.avg_buy_price_usd_weighted),
       hint: "按仓位加权后的平均成本",
       icon: <ChartNoAxesCombined size={18} />,
     },

@@ -9,7 +9,13 @@ type TokenPageState = {
   error: string | null;
 };
 
-export function useTokenPage() {
+type UseTokenPageOptions = {
+  chartDays?: number;
+  topLimit?: number;
+  profileLimit?: number;
+};
+
+export function useTokenPage(tokenSymbol: string, options: UseTokenPageOptions = {}) {
   const [state, setState] = useState<TokenPageState>({
     data: null,
     isLoading: true,
@@ -19,7 +25,7 @@ export function useTokenPage() {
   useEffect(() => {
     let isMounted = true;
 
-    fetchTokenPage()
+    fetchTokenPage(tokenSymbol, options)
       .then((data) => {
         if (!isMounted) {
           return;
@@ -40,7 +46,7 @@ export function useTokenPage() {
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [options.chartDays, options.profileLimit, options.topLimit, tokenSymbol]);
 
   return state;
 }

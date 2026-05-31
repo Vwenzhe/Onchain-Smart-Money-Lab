@@ -14,14 +14,16 @@ import {
 
 import { Panel } from "@/components/ui/Panel";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { formatCompactNumber, formatCurrency } from "@/lib/format";
-import type { Charts } from "@/types/token-display";
+import { formatCompactNumber, formatCurrency, formatDateTime } from "@/lib/format";
+import type { Charts, PageSummary, TokenAiSummary } from "@/types/token-display";
 
 type ChartsSectionProps = {
   charts: Charts;
+  summary: PageSummary;
+  aiSummary: TokenAiSummary | null;
 };
 
-export function ChartsSection({ charts }: ChartsSectionProps) {
+export function ChartsSection({ charts, summary, aiSummary }: ChartsSectionProps) {
   const trendData = charts.labels.map((label, index) => ({
     label,
     price: charts.series.price_usd[index],
@@ -40,7 +42,7 @@ export function ChartsSection({ charts }: ChartsSectionProps) {
       <SectionHeading
         eyebrow="Trend & Structure"
         title="趋势与盈亏结构"
-        description="主图负责讲趋势，PnL 分布负责讲结构。这样前端页面先讲清结论，再把地址收益状态展开给读者。"
+        description="主图负责讲趋势，PnL 分布负责讲结构，AI 总结负责解释市场语境与异动归因。这样第二层页面优先展示研究主叙事，而不是明细堆叠。"
       />
       <div className="grid gap-4 xl:grid-cols-[1.35fr_0.65fr]">
         <Panel className="p-5">
@@ -129,6 +131,47 @@ export function ChartsSection({ charts }: ChartsSectionProps) {
           </div>
         </Panel>
       </div>
+      <Panel className="grid gap-4 p-6 lg:grid-cols-[1.15fr_1.15fr_0.7fr]">
+          <div className="space-y-3">
+            <p className="text-xs uppercase tracking-[0.24em] text-slate-500">市场结构</p>
+            <p className="text-sm leading-7 text-slate-200">
+              {aiSummary?.market_context ?? summary.research_summary}
+            </p>
+            <div className="rounded-2xl border border-white/10 bg-black/35 p-4">
+              <p className="text-xs uppercase tracking-[0.2em] text-slate-500">趋势总结</p>
+              <p className="mt-2 text-sm leading-7 text-slate-300">
+                {aiSummary?.trend_summary ?? "当前 token 级 AI 总结暂不可用，先以概览指标和趋势图为主进行结构化判断。"}
+              </p>
+            </div>
+          </div>
+          <div className="space-y-3">
+            <p className="text-xs uppercase tracking-[0.24em] text-slate-500">异动归因</p>
+            <p className="text-sm leading-7 text-slate-200">
+              {aiSummary?.event_attribution ?? "当前未返回独立异动归因字段，建议先结合价格、净流入与候选地址数的同步变化做人工复核。"}
+            </p>
+            <div className="rounded-2xl border border-amber-400/15 bg-amber-400/5 p-4">
+              <p className="text-xs uppercase tracking-[0.2em] text-amber-200">风险提示</p>
+              <p className="mt-2 text-sm leading-7 text-slate-300">
+                {aiSummary?.risk_warning ?? summary.risk_highlight}
+              </p>
+            </div>
+          </div>
+          <div className="space-y-3">
+            <p className="text-xs uppercase tracking-[0.24em] text-slate-500">AI Summary</p>
+            <div className="rounded-2xl border border-white/10 bg-black/35 p-4">
+              <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Confidence</p>
+              <p className="mt-2 font-display text-3xl uppercase text-white">
+                {aiSummary?.confidence ?? "fallback"}
+              </p>
+            </div>
+            <div className="rounded-2xl border border-white/10 bg-black/35 p-4">
+              <p className="text-xs uppercase tracking-[0.2em] text-slate-500">Generated At</p>
+              <p className="mt-2 text-sm leading-7 text-slate-300">
+                {formatDateTime(aiSummary?.generated_at ?? null)}
+              </p>
+            </div>
+          </div>
+      </Panel>
     </section>
   );
 }

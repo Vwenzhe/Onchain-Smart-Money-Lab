@@ -8,64 +8,54 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from backend.app.services.address_profile_generator import AddressProfileBatchGenerator
 from backend.app.services.env_loader import load_project_env
-from token_batch_utils import (
-    DEFAULT_CONFIG_PATH,
-    resolve_feature_output_path,
-    resolve_processed_input_path,
-)
+from backend.app.services.token_ai_summary_generator import TokenAISummaryGenerator
+from token_batch_utils import DEFAULT_CONFIG_PATH, resolve_feature_output_path
 
 DEFAULT_TOKEN_SYMBOL = "FET"
 
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="离线生成地址画像结果")
+    parser = argparse.ArgumentParser(description="Generate token-level AI summary JSON")
     parser.add_argument(
         "--config-path",
         type=Path,
         default=DEFAULT_CONFIG_PATH,
-        help="token 配置文件路径",
+        help="token config path",
     )
     parser.add_argument(
-        "--input-path",
-        type=Path,
-        default=None,
-        help="输入特征层 JSON 文件路径",
+        "--token-symbol",
+        default=DEFAULT_TOKEN_SYMBOL,
+        help="Token symbol to summarize",
     )
     parser.add_argument(
         "--output-path",
         type=Path,
         default=None,
-        help="输出画像结果 JSON 文件路径",
+        help="Output summary JSON path",
     )
     parser.add_argument(
-        "--token-symbol",
-        default=DEFAULT_TOKEN_SYMBOL,
-        help="目标 token_symbol，默认 FET",
-    )
-    parser.add_argument(
-        "--limit",
+        "--lookback-days",
         type=int,
-        default=None,
-        help="调试时仅处理前 N 条记录",
+        default=7,
+        help="Number of latest overview rows to include",
     )
     parser.add_argument(
-        "--max-retries",
+        "--top-position-limit",
         type=int,
-        default=1,
-        help="单条记录的最大重试次数",
+        default=5,
+        help="Number of top positions to include in the prompt input",
     )
     parser.add_argument(
         "--timeout",
         type=int,
         default=60,
-        help="单次 LLM 调用超时时间（秒）",
+        help="LLM request timeout in seconds",
     )
     parser.add_argument(
         "--all-enabled",
         action="store_true",
-        help="按 tokens.json 中所有启用币种批量生成",
+        help="Generate token summaries for all enabled tokens",
     )
     return parser.parse_args(argv)
 
@@ -73,40 +63,35 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
 def run_batch(
     *,
     config_path: Path = DEFAULT_CONFIG_PATH,
-    input_path: Path | None = None,
-    output_path: Path | None = None,
     token_symbol: str = DEFAULT_TOKEN_SYMBOL,
-    limit: int | None = None,
-    max_retries: int = 1,
+    output_path: Path | None = None,
+    lookback_days: int = 7,
+    top_position_limit: int = 5,
     timeout: int = 60,
 ) -> Path:
     token_symbol = token_symbol.upper()
     env_path = load_project_env(PROJECT_ROOT / ".env")
-    generator = AddressProfileBatchGenerator(
+    generator = TokenAISummaryGenerator(
         project_root=PROJECT_ROOT,
         env_path=env_path,
-        max_retries=max_retries,
         timeout=timeout,
     )
-    resolved_input_path = input_path or resolve_processed_input_path(
-        "address_feature_snapshot", token_symbol
-    )
     resolved_output_path = output_path or resolve_feature_output_path(
-        "address_profiles", token_symbol
+        "token_ai_summary", token_symbol
     )
-    return generator.build_profiles(
-        input_path=resolved_input_path,
-        output_path=resolved_output_path,
+    return generator.build_summary(
         token_symbol=token_symbol,
-        limit=limit,
+        output_path=resolved_output_path,
+        lookback_days=lookback_days,
+        top_position_limit=top_position_limit,
     )
 
 
 def run_all_enabled(
     *,
     config_path: Path = DEFAULT_CONFIG_PATH,
-    limit: int | None = None,
-    max_retries: int = 1,
+    lookback_days: int = 7,
+    top_position_limit: int = 5,
     timeout: int = 60,
 ) -> list[Path]:
     from token_batch_utils import load_enabled_tokens
@@ -114,13 +99,13 @@ def run_all_enabled(
     outputs: list[Path] = []
     for token in load_enabled_tokens(config_path):
         token_symbol = token.token_symbol.upper()
-        print(f"开始生成地址画像: {token_symbol}")
+        print(f"开始生成 Token AI 总结: {token_symbol}")
         outputs.append(
             run_batch(
                 config_path=config_path,
                 token_symbol=token_symbol,
-                limit=limit,
-                max_retries=max_retries,
+                lookback_days=lookback_days,
+                top_position_limit=top_position_limit,
                 timeout=timeout,
             )
         )
@@ -132,24 +117,23 @@ def main(argv: list[str] | None = None) -> None:
     if args.all_enabled:
         output_paths = run_all_enabled(
             config_path=args.config_path,
-            limit=args.limit,
-            max_retries=args.max_retries,
+            lookback_days=args.lookback_days,
+            top_position_limit=args.top_position_limit,
             timeout=args.timeout,
         )
         for output_path in output_paths:
-            print(f"已生成地址画像结果: {output_path.relative_to(PROJECT_ROOT)}")
+            print(f"Generated token AI summary: {output_path.relative_to(PROJECT_ROOT)}")
         return
 
     output_path = run_batch(
         config_path=args.config_path,
-        input_path=args.input_path,
-        output_path=args.output_path,
         token_symbol=args.token_symbol,
-        limit=args.limit,
-        max_retries=args.max_retries,
+        output_path=args.output_path,
+        lookback_days=args.lookback_days,
+        top_position_limit=args.top_position_limit,
         timeout=args.timeout,
     )
-    print(f"已生成地址画像结果: {output_path.relative_to(PROJECT_ROOT)}")
+    print(f"Generated token AI summary: {output_path.relative_to(PROJECT_ROOT)}")
 
 
 if __name__ == "__main__":

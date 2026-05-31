@@ -6,6 +6,22 @@ export function formatCurrency(value: number, maximumFractionDigits = 2): string
   }).format(value);
 }
 
+export function formatTokenCurrency(value: number): string {
+  const absValue = Math.abs(value);
+
+  if (absValue >= 1) {
+    return formatCurrency(value, 4);
+  }
+  if (absValue >= 0.01) {
+    return formatCurrency(value, 6);
+  }
+  return formatCurrency(value, 8);
+}
+
+export function getPnlTextClass(value: number): string {
+  return value < 0 ? "text-rose-400" : "text-emerald-300";
+}
+
 export function formatNumber(value: number, maximumFractionDigits = 0): string {
   return new Intl.NumberFormat("zh-CN", {
     maximumFractionDigits,
@@ -39,7 +55,8 @@ export function formatDateTime(value: string | null): string {
     day: "2-digit",
     hour: "2-digit",
     minute: "2-digit",
-    timeZone: "UTC",
+    hour12: false,
+    timeZone: "Asia/Shanghai",
   }).format(date);
 }
 

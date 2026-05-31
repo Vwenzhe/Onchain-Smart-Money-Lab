@@ -1,6 +1,9 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-import { FET_PAGE_ENDPOINT, fetchTokenPage } from "@/services/token-page-api";
+import {
+  buildTokenPageEndpoint,
+  fetchTokenPage,
+} from "@/services/token-page-api";
 
 afterEach(() => {
   vi.restoreAllMocks();
@@ -20,9 +23,9 @@ describe("fetchTokenPage", () => {
       }),
     );
 
-    const result = await fetchTokenPage();
+    const result = await fetchTokenPage("fet");
 
-    expect(fetch).toHaveBeenCalledWith(FET_PAGE_ENDPOINT, {
+    expect(fetch).toHaveBeenCalledWith(buildTokenPageEndpoint("fet"), {
       headers: { Accept: "application/json" },
     });
     expect(result.summary.token_symbol).toBe("FET");
@@ -37,6 +40,6 @@ describe("fetchTokenPage", () => {
       }),
     );
 
-    await expect(fetchTokenPage()).rejects.toThrow("页面数据请求失败: 500");
+    await expect(fetchTokenPage("eth")).rejects.toThrow("页面数据请求失败: 500");
   });
 });

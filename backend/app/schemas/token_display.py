@@ -8,7 +8,7 @@ T = TypeVar("T")
 
 
 class MetaModel(BaseModel):
-    token_symbol: Literal["FET"]
+    token_symbol: str
     chain_name: str
     degraded: bool = False
 
@@ -21,8 +21,21 @@ class ApiEnvelope(BaseModel, Generic[T]):
     meta: MetaModel
 
 
+class TokenAISummaryModel(BaseModel):
+    generated_at: str
+    generation_status: str
+    error_code: str | None
+    price_cache_generated_at: str | None = None
+    price_cache_last_updated_at: str | None = None
+    trend_summary: str
+    market_context: str
+    event_attribution: str
+    risk_warning: str
+    confidence: str
+
+
 class PageSummaryModel(BaseModel):
-    token_symbol: Literal["FET"]
+    token_symbol: str
     token_name: str
     chain_name: str
     as_of_date: str
@@ -36,6 +49,7 @@ class PageSummaryModel(BaseModel):
     top10_concentration: float
     research_summary: str
     risk_highlight: str
+    ai_summary: TokenAISummaryModel | None = None
 
 
 class ChartSeriesModel(BaseModel):
@@ -121,10 +135,20 @@ class DuneEmbedsModel(BaseModel):
     items: list[DuneEmbedItemModel]
 
 
+class PageFreshnessModel(BaseModel):
+    overview_latest_date: str
+    snapshot_min_date: str
+    snapshot_max_date: str
+    profile_generated_at: str
+    ai_summary_generated_at: str | None = None
+    price_cache_generated_at: str | None = None
+    price_cache_last_updated_at: str | None = None
+
+
 class PageDataModel(BaseModel):
     summary: PageSummaryModel
     charts: ChartsModel
     top_addresses: TopAddressesModel
     address_profiles: AddressProfilesModel
     dune_embeds: DuneEmbedsModel
-    freshness: dict[str, str | int]
+    freshness: PageFreshnessModel

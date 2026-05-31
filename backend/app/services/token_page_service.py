@@ -1,10 +1,11 @@
 from __future__ import annotations
 
 from collections import Counter
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
+from backend.app.services.config_loader import TokenConfig, load_project_config
 from backend.app.repositories.feature_store_repository import (
     DatasetInvalidError,
     DatasetNotFoundError,
@@ -12,10 +13,11 @@ from backend.app.repositories.feature_store_repository import (
 )
 
 
-FET_DASHBOARD_URL = (
+DEFAULT_DASHBOARD_URL = (
     "https://dune.com/wudide/onchain-smart-money-lab"
     "?utm_source=share&utm_medium=copy&utm_campaign=dashboard"
 )
+BEIJING_TZ = timezone(timedelta(hours=8), name="Asia/Shanghai")
 
 
 class TokenNotSupportedError(ValueError):
@@ -26,11 +28,25 @@ class TokenPageService:
     def __init__(self, project_root: str | Path) -> None:
         self.project_root = Path(project_root).resolve()
         self.repository = FeatureStoreRepository(self.project_root)
+        config = load_project_config(self.project_root / "config" / "tokens.json")
+        self.token_configs = {
+            token.token_symbol.upper(): token
+            for token in config.tokens
+        }
+
+    def get_token_meta(self, token_symbol: str) -> dict[str, str]:
+        token = self._resolve_token(token_symbol)
+        return {
+            "token_symbol": token.token_symbol.upper(),
+            "chain_name": token.chain_name,
+        }
 
     def get_summary(self, token_symbol: str) -> dict[str, Any]:
-        self._ensure_fet(token_symbol)
-        overview = self.repository.read_processed_dataset("token_overview_daily", "FET")
-        snapshot = self.repository.read_processed_dataset("address_feature_snapshot", "FET")
+        token = self._resolve_token(token_symbol)
+        token_symbol = token.token_symbol.upper()
+        overview = self.repository.read_processed_dataset("token_overview_daily", token_symbol)
+        snapshot = self.repository.read_processed_dataset("address_feature_snapshot", token_symbol)
+        ai_summary = self._get_ai_summary(token_symbol)
 
         latest = self._latest_overview_row(overview)
         snapshot_rows = snapshot["rows"]
@@ -54,9 +70,9 @@ class TokenPageService:
         price = float(latest["token_price_usd"])
 
         return {
-            "token_symbol": "FET",
-            "token_name": str(latest["token_name"]),
-            "chain_name": str(latest["chain_name"]),
+            "token_symbol": token_symbol,
+            "token_name": str(latest.get("token_name", token.token_name)),
+            "chain_name": str(latest.get("chain_name", token.chain_name)),
             "as_of_date": self._to_iso(str(latest["as_of_date"])),
             "token_price_usd": price,
             "candidate_address_count": candidate_count,
@@ -67,20 +83,30 @@ class TokenPageService:
             "profitable_address_share": profitable_share,
             "top10_concentration": top10_concentration,
             "research_summary": (
-                f"当前 FET 候选聪明钱地址为 {candidate_count} 个，累计净流入约 "
-                f"{net_flow:,.0f} 美元，价格维持在 {price:.4f} 美元附近。"
+                ai_summary["trend_summary"]
+                if ai_summary is not None
+                else (
+                    f"当前 {token_symbol} 候选聪明钱地址为 {candidate_count} 个，累计净流入约 "
+                    f"{net_flow:,.0f} 美元，价格维持在 {price:.4f} 美元附近。"
+                )
             ),
-            "risk_highlight": self._build_risk_highlight(top10_concentration, profitable_share),
+            "risk_highlight": (
+                ai_summary["risk_warning"]
+                if ai_summary is not None
+                else self._build_risk_highlight(top10_concentration, profitable_share)
+            ),
+            "ai_summary": ai_summary,
         }
 
     def get_charts(self, token_symbol: str, days: int = 30) -> dict[str, Any]:
-        self._ensure_fet(token_symbol)
+        token = self._resolve_token(token_symbol)
+        token_symbol = token.token_symbol.upper()
         if days < 7 or days > 45:
             raise ValueError("days 必须位于 7 到 45 之间")
 
-        overview = self.repository.read_processed_dataset("token_overview_daily", "FET")
-        snapshot = self.repository.read_processed_dataset("address_feature_snapshot", "FET")
-        pnl_distribution = self.repository.read_processed_dataset("token_pnl_distribution", "FET")
+        overview = self.repository.read_processed_dataset("token_overview_daily", token_symbol)
+        snapshot = self.repository.read_processed_dataset("address_feature_snapshot", token_symbol)
+        pnl_distribution = self.repository.read_processed_dataset("token_pnl_distribution", token_symbol)
 
         ordered_rows = list(reversed(overview["rows"]))[-days:]
         total_snapshot_count = max(len(snapshot["rows"]), 1)
@@ -119,13 +145,14 @@ class TokenPageService:
         sort_by: str = "position_value_usd",
         order: str = "desc",
     ) -> dict[str, Any]:
-        self._ensure_fet(token_symbol)
+        token = self._resolve_token(token_symbol)
+        token_symbol = token.token_symbol.upper()
         if sort_by not in {"position_value_usd", "net_flow_usd", "unrealized_pnl_pct"}:
             raise ValueError("sort_by 无效")
         if order not in {"asc", "desc"}:
             raise ValueError("order 无效")
 
-        snapshot = self.repository.read_processed_dataset("address_feature_snapshot", "FET")
+        snapshot = self.repository.read_processed_dataset("address_feature_snapshot", token_symbol)
         rows = snapshot["rows"]
         max_date = max(self._to_iso(str(row["as_of_date"])) for row in rows)
         min_date = min(self._to_iso(str(row["as_of_date"])) for row in rows)
@@ -169,9 +196,10 @@ class TokenPageService:
         }
 
     def get_address_profiles(self, token_symbol: str, limit: int = 6) -> dict[str, Any]:
-        self._ensure_fet(token_symbol)
-        profiles = self.repository.read_feature_dataset("address_profiles", "FET")
-        snapshot = self.repository.read_processed_dataset("address_feature_snapshot", "FET")
+        token = self._resolve_token(token_symbol)
+        token_symbol = token.token_symbol.upper()
+        profiles = self.repository.read_feature_dataset("address_profiles", token_symbol)
+        snapshot = self.repository.read_processed_dataset("address_feature_snapshot", token_symbol)
         snapshot_map = {str(row["address_key"]): row for row in snapshot["rows"]}
 
         items = []
@@ -198,14 +226,18 @@ class TokenPageService:
         return {"items": items, "label_summary": dict(label_counter)}
 
     def get_dune_embeds(self, token_symbol: str) -> dict[str, Any]:
-        self._ensure_fet(token_symbol)
+        token = self._resolve_token(token_symbol)
+        token_symbol = token.token_symbol.upper()
         return {
             "items": [
                 {
-                    "title": "Onchain Smart Money Lab Dashboard",
-                    "description": "当前阶段保留 Dune 外链入口，后续可在分享面板中补入具体 embed iframe 链接。",
+                    "title": f"{token_symbol} Onchain Smart Money Dashboard",
+                    "description": (
+                        f"当前阶段为 {token_symbol} 保留统一 Dune 外链入口，后续可继续补充"
+                        " 更细的单币研究视图。"
+                    ),
                     "embed_url": None,
-                    "open_url": FET_DASHBOARD_URL,
+                    "open_url": DEFAULT_DASHBOARD_URL,
                     "embed_status": "pending_manual_embed",
                 }
             ]
@@ -217,6 +249,7 @@ class TokenPageService:
         top_addresses = self.get_top_addresses(token_symbol, limit=top_limit)
         address_profiles = self.get_address_profiles(token_symbol, limit=profile_limit)
         dune_embeds = self.get_dune_embeds(token_symbol)
+        ai_summary = summary.get("ai_summary")
 
         return {
             "summary": summary,
@@ -228,13 +261,52 @@ class TokenPageService:
                 "overview_latest_date": summary["as_of_date"],
                 "snapshot_min_date": top_addresses["freshness"]["snapshot_min_date"],
                 "snapshot_max_date": top_addresses["freshness"]["snapshot_max_date"],
-                "profile_generated_at": self._profile_generated_at(),
+                "profile_generated_at": self._profile_generated_at(token_symbol),
+                "ai_summary_generated_at": (
+                    ai_summary["generated_at"] if isinstance(ai_summary, dict) else None
+                ),
+                "price_cache_generated_at": (
+                    ai_summary["price_cache_generated_at"] if isinstance(ai_summary, dict) else None
+                ),
+                "price_cache_last_updated_at": (
+                    ai_summary["price_cache_last_updated_at"] if isinstance(ai_summary, dict) else None
+                ),
             },
         }
 
-    def _profile_generated_at(self) -> str:
-        profiles = self.repository.read_feature_dataset("address_profiles", "FET")
+    def _profile_generated_at(self, token_symbol: str) -> str:
+        profiles = self.repository.read_feature_dataset("address_profiles", token_symbol.upper())
         return self._to_iso(str(profiles["generated_at"]))
+
+    def _get_ai_summary(self, token_symbol: str) -> dict[str, Any] | None:
+        try:
+            payload = self.repository.read_feature_dataset("token_ai_summary", token_symbol)
+        except DatasetNotFoundError:
+            return None
+
+        analysis = payload.get("analysis")
+        if not isinstance(analysis, dict):
+            raise DatasetInvalidError("token_ai_summary 缺少 analysis")
+        input_snapshot = payload.get("input_snapshot")
+        if not isinstance(input_snapshot, dict):
+            raise DatasetInvalidError("token_ai_summary 缺少 input_snapshot")
+
+        return {
+            "generated_at": self._to_iso(str(payload["generated_at"])),
+            "generation_status": str(payload.get("generation_status", "unknown")),
+            "error_code": payload.get("error_code"),
+            "price_cache_generated_at": self._optional_iso(
+                input_snapshot.get("price_cache_generated_at")
+            ),
+            "price_cache_last_updated_at": self._optional_iso(
+                input_snapshot.get("price_cache_last_updated_at")
+            ),
+            "trend_summary": str(analysis.get("trend_summary", "")),
+            "market_context": str(analysis.get("market_context", "")),
+            "event_attribution": str(analysis.get("event_attribution", "")),
+            "risk_warning": str(analysis.get("risk_warning", "")),
+            "confidence": str(analysis.get("confidence", "")),
+        }
 
     def _latest_overview_row(self, payload: dict[str, Any]) -> dict[str, Any]:
         rows = payload.get("rows")
@@ -249,13 +321,22 @@ class TokenPageService:
             return "当前多数样本处于盈利区间，需关注后续是否出现集中兑现。"
         return "当前结构相对分散，但仍需关注样本规模与窗口期带来的偏差。"
 
-    def _ensure_fet(self, token_symbol: str) -> None:
-        if token_symbol.upper() != "FET":
-            raise TokenNotSupportedError("第一版只支持 FET")
+    def _resolve_token(self, token_symbol: str) -> TokenConfig:
+        normalized = token_symbol.strip().upper()
+        token = self.token_configs.get(normalized)
+        if token is None:
+            raise TokenNotSupportedError(f"当前不支持 token: {token_symbol}")
+        return token
 
     def _to_iso(self, value: str) -> str:
-        normalized = value.replace(" UTC", "+00:00").replace(" ", "T", 1)
-        return datetime.fromisoformat(normalized).isoformat().replace("+00:00", "Z")
+        normalized = value.strip().replace(" UTC", "+00:00").replace("Z", "+00:00")
+        if "T" not in normalized and " " in normalized:
+            normalized = normalized.replace(" ", "T", 1)
+
+        parsed = datetime.fromisoformat(normalized)
+        if parsed.tzinfo is None:
+            parsed = parsed.replace(tzinfo=timezone.utc)
+        return parsed.astimezone(BEIJING_TZ).isoformat(timespec="seconds")
 
     def _optional_iso(self, value: Any) -> str | None:
         if value in (None, ""):

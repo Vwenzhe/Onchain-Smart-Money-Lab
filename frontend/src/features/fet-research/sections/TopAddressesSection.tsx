@@ -1,40 +1,53 @@
-import { Clock3, Wallet } from "lucide-react";
+import { ArrowRight, Clock3, Wallet } from "lucide-react";
+import { Link } from "react-router-dom";
 
 import { Panel } from "@/components/ui/Panel";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import type { TokenViewConfig } from "@/config/tokens";
 import {
   formatCurrency,
   formatDateTime,
   formatNumber,
   formatPercent,
+  formatTokenCurrency,
+  getPnlTextClass,
   shortenAddress,
 } from "@/lib/format";
 import type { TokenPageData } from "@/types/token-display";
 
 type TopAddressesSectionProps = {
   data: TokenPageData["top_addresses"];
+  tokenConfig: TokenViewConfig;
 };
 
-export function TopAddressesSection({ data }: TopAddressesSectionProps) {
+export function TopAddressesSection({ data, tokenConfig }: TopAddressesSectionProps) {
+  const previewItems = [...data.items]
+    .sort((a, b) => b.unrealized_pnl_usd - a.unrealized_pnl_usd)
+    .slice(0, 7);
+
   return (
     <section className="space-y-6">
       <SectionHeading
         eyebrow="Holder Intelligence"
         title="Top 地址快照"
-        description="页面直接消费后端清洗后的地址模型，展示仓位、成本、收益和快照新鲜度，不再让前端拼装原始明细。"
+        description="第二层只保留收益表现最具代表性的 7 个地址，作为研究页的样本预览；更完整的地址表格与画像会在第三层详细页承接。"
       />
       <Panel className="overflow-hidden p-0">
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 px-6 py-5">
           <div>
-            <h3 className="font-display text-xl text-white">Top Addresses</h3>
+            <h3 className="font-display text-xl text-white">Top 7 Profit Snapshots</h3>
             <p className="mt-1 text-sm text-slate-400">
               快照范围 {formatDateTime(data.freshness.snapshot_min_date)} 至{" "}
               {formatDateTime(data.freshness.snapshot_max_date)}
             </p>
           </div>
-          <div className="rounded-full border border-white/10 px-4 py-2 text-xs uppercase tracking-[0.22em] text-slate-400">
-            Stale Rows {data.freshness.stale_row_count}
-          </div>
+          <Link
+            to={`/tokens/${tokenConfig.slug}/positions`}
+            className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-4 py-2 text-xs uppercase tracking-[0.22em] text-emerald-100 transition hover:bg-emerald-400/20"
+          >
+            More
+            <ArrowRight size={14} />
+          </Link>
         </div>
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-white/8">
@@ -42,14 +55,13 @@ export function TopAddressesSection({ data }: TopAddressesSectionProps) {
               <tr className="text-left text-xs uppercase tracking-[0.18em] text-slate-400">
                 <th className="px-6 py-4">地址</th>
                 <th className="px-6 py-4">持仓价值</th>
-                <th className="px-6 py-4">净流入</th>
-                <th className="px-6 py-4">成本</th>
+                <th className="px-6 py-4">仓位规模</th>
                 <th className="px-6 py-4">浮盈</th>
                 <th className="px-6 py-4">快照状态</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-white/8">
-              {data.items.map((item) => (
+              {previewItems.map((item) => (
                 <tr key={item.address_key} className="align-top text-sm text-slate-200">
                   <td className="px-6 py-5">
                     <div className="space-y-2">
@@ -67,16 +79,22 @@ export function TopAddressesSection({ data }: TopAddressesSectionProps) {
                       {formatCurrency(item.position_value_usd, 0)}
                     </p>
                     <p className="mt-1 text-xs text-slate-400">
-                      {formatNumber(item.net_position_token)} FET
+                      成本 {formatTokenCurrency(item.avg_buy_price_usd)}
                     </p>
                   </td>
-                  <td className="px-6 py-5">{formatCurrency(item.net_flow_usd, 0)}</td>
-                  <td className="px-6 py-5">{formatCurrency(item.avg_buy_price_usd, 4)}</td>
                   <td className="px-6 py-5">
-                    <p className="font-medium text-emerald-300">
-                      {formatPercent(item.unrealized_pnl_pct, 1)}
+                    <p className="font-medium text-white">
+                      {formatNumber(item.net_position_token)} {tokenConfig.symbol}
                     </p>
                     <p className="mt-1 text-xs text-slate-400">
+                      净流入 {formatCurrency(item.net_flow_usd, 0)}
+                    </p>
+                  </td>
+                  <td className="px-6 py-5">
+                    <p className={`font-medium ${getPnlTextClass(item.unrealized_pnl_pct)}`}>
+                      {formatPercent(item.unrealized_pnl_pct, 1)}
+                    </p>
+                    <p className={`mt-1 text-xs ${getPnlTextClass(item.unrealized_pnl_usd)}`}>
                       {formatCurrency(item.unrealized_pnl_usd, 0)}
                     </p>
                   </td>
@@ -90,6 +108,14 @@ export function TopAddressesSection({ data }: TopAddressesSectionProps) {
               ))}
             </tbody>
           </table>
+        </div>
+        <div className="flex flex-wrap items-center justify-between gap-3 border-t border-white/10 px-6 py-5">
+          <p className="text-sm text-slate-400">
+            当前只展示收益最高的 7 个地址，避免第二层页面承接过多明细字段。
+          </p>
+          <div className="rounded-full border border-white/10 px-4 py-2 text-xs uppercase tracking-[0.22em] text-slate-400">
+            Stale Rows {data.freshness.stale_row_count}
+          </div>
         </div>
       </Panel>
     </section>

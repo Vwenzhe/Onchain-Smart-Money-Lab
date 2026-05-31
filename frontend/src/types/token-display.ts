@@ -4,14 +4,14 @@ export type ApiEnvelope<T> = {
   request_id: string;
   data: T;
   meta: {
-    token_symbol: "FET";
+    token_symbol: string;
     chain_name: string;
     degraded?: boolean;
   };
 };
 
 export type PageSummary = {
-  token_symbol: "FET";
+  token_symbol: string;
   token_name: string;
   chain_name: string;
   as_of_date: string;
@@ -25,6 +25,20 @@ export type PageSummary = {
   top10_concentration: number;
   research_summary: string;
   risk_highlight: string;
+  ai_summary: TokenAiSummary | null;
+};
+
+export type TokenAiSummary = {
+  generated_at: string;
+  generation_status: string;
+  error_code: string | null;
+  price_cache_generated_at: string | null;
+  price_cache_last_updated_at: string | null;
+  trend_summary: string;
+  market_context: string;
+  event_attribution: string;
+  risk_warning: string;
+  confidence: "low" | "medium" | "high" | string;
 };
 
 export type Charts = {
@@ -109,5 +123,8 @@ export type TokenPageData = {
     snapshot_min_date: string;
     snapshot_max_date: string;
     profile_generated_at: string;
+    ai_summary_generated_at: string | null;
+    price_cache_generated_at: string | null;
+    price_cache_last_updated_at: string | null;
   };
 };

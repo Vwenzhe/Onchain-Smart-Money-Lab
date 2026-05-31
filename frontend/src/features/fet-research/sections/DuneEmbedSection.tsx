@@ -14,7 +14,7 @@ export function DuneEmbedSection({ data }: DuneEmbedSectionProps) {
       <SectionHeading
         eyebrow="Live Proof"
         title="Dune 外部研究视图"
-        description="Dune 不是页面主体，而是研究证明层。第一阶段保留外链与嵌入位，后续你可以在 Dune 分享面板里补入具体 iframe。"
+        description="Dune 不是页面主体，而是外部研究证明层。当前阶段只保留外链，不让它抢占主页面叙事。"
       />
       <div className="grid gap-4 xl:grid-cols-2">
         {data.items.map((item) => (
@@ -31,13 +31,14 @@ export function DuneEmbedSection({ data }: DuneEmbedSectionProps) {
               </div>
               <div>
                 <h3 className="font-display text-2xl text-white">{item.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-slate-300">{item.description}</p>
+                <p className="mt-3 text-sm leading-7 text-slate-300">
+                  当前阶段将 Dune 保持为外部研究证明层，只提供跳转入口，不把它放进页面主体叙事。
+                </p>
               </div>
-              <div className="rounded-[24px] border border-dashed border-white/15 bg-slate-950/55 p-6">
+              <div className="rounded-[24px] border border-dashed border-white/15 bg-black/45 p-6">
                 <p className="text-sm leading-7 text-slate-300">
-                  当前前端结构已经为 Dune iframe 预留独立卡片容器。等你在 Dune
-                  分享弹窗中拿到具体 `embeds/query-id/visualization-id` 链接后，只需要把
-                  `embed_url` 写入配置即可。
+                  这里不直接展开 Dune 图表，而是把它作为研究来源和外部证明层放在页面末尾。
+                  这样主页面继续围绕你的结构化特征、价格缓存和 AI 解释组织叙事。
                 </p>
               </div>
             </div>
