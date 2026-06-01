@@ -8,6 +8,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
+from backend.app.services.data_registry import DatasetPathResolver
 from backend.app.services.result_writer import write_json
 
 
@@ -17,6 +18,7 @@ DATASET_MAPPING = {
     "03_token_position_validation": "address_feature_timeline",
     "04_token_pnl_snapshot": "token_pnl_distribution",
 }
+PATH_RESOLVER = DatasetPathResolver(PROJECT_ROOT)
 
 
 def normalize_dune_payload(payload: dict, *, dataset_name: str, token_symbol: str) -> dict:
@@ -34,8 +36,7 @@ def normalize_dune_payload(payload: dict, *, dataset_name: str, token_symbol: st
 
 
 def main() -> None:
-    raw_root = PROJECT_ROOT / "data" / "raw" / "dune"
-    processed_root = PROJECT_ROOT / "data" / "processed"
+    raw_root = PATH_RESOLVER.resolve_raw_dune_root()
 
     for token_dir in raw_root.glob("*"):
         if not token_dir.is_dir():
@@ -55,7 +56,7 @@ def main() -> None:
                 dataset_name=dataset_name,
                 token_symbol=token_symbol,
             )
-            output_path = processed_root / dataset_name / f"{token_symbol}.json"
+            output_path = PATH_RESOLVER.resolve_path(dataset_name, token_symbol)
             write_json(normalized_payload, output_path)
             print(f"已生成特征层文件: {output_path.relative_to(PROJECT_ROOT)}")
 

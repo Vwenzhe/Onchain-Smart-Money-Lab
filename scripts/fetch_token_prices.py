@@ -11,12 +11,13 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
+from backend.app.services.data_registry import DatasetPathResolver
 from backend.app.services.coingecko_client import CoinGeckoClient
 from backend.app.services.result_writer import write_json
 
 CONFIG_PATH = PROJECT_ROOT / "config" / "token_prices.json"
-LATEST_OUTPUT_PATH = PROJECT_ROOT / "data" / "features" / "token_prices" / "latest.json"
-HISTORY_DIR = PROJECT_ROOT / "data" / "features" / "token_prices" / "history"
+PATH_RESOLVER = DatasetPathResolver(PROJECT_ROOT)
+LATEST_OUTPUT_PATH = PATH_RESOLVER.resolve_path("token_prices_latest")
 
 
 def load_price_config(config_path: str | Path = CONFIG_PATH) -> dict[str, Any]:
@@ -128,8 +129,8 @@ def build_price_row(
 
 
 def update_history(*, row: dict[str, Any], interval_minutes: int) -> None:
-    HISTORY_DIR.mkdir(parents=True, exist_ok=True)
-    history_path = HISTORY_DIR / f"{row['token_symbol']}.json"
+    history_path = PATH_RESOLVER.resolve_path("token_prices_history", str(row["token_symbol"]))
+    history_path.parent.mkdir(parents=True, exist_ok=True)
     history_payload = _load_history_payload(history_path, token_symbol=str(row["token_symbol"]))
 
     bucket = _to_interval_bucket(str(row["queried_at"]), interval_minutes)

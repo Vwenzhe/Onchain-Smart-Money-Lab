@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Any
 
 from backend.app.repositories.feature_store_repository import FeatureStoreRepository
+from backend.app.services.data_registry import DatasetPathResolver
 from backend.app.services.llm_client import LLMClient
 from backend.app.services.prompt_loader import load_prompt_text
 from backend.app.services.result_writer import write_json
@@ -32,6 +33,7 @@ class TokenAISummaryGenerator:
         self.project_root = Path(project_root).resolve()
         self.timeout = timeout
         self.repository = FeatureStoreRepository(self.project_root)
+        self.path_resolver = DatasetPathResolver(self.project_root)
         self.llm_client = LLMClient(env_path=env_path)
         self.system_prompt = self._load_system_prompt()
         self.user_prompt_prefix = self._load_user_prompt_prefix()
@@ -83,10 +85,16 @@ class TokenAISummaryGenerator:
             "generation_status": generation_status,
             "error_code": error_code,
             "source_datasets": {
-                "token_overview_daily": f"data/processed/token_overview_daily/{token_symbol}.json",
-                "token_pnl_distribution": f"data/processed/token_pnl_distribution/{token_symbol}.json",
-                "address_feature_snapshot": f"data/processed/address_feature_snapshot/{token_symbol}.json",
-                "token_prices_latest": "data/features/token_prices/latest.json",
+                "token_overview_daily": self.path_resolver.build_reference(
+                    "token_overview_daily", token_symbol
+                ),
+                "token_pnl_distribution": self.path_resolver.build_reference(
+                    "token_pnl_distribution", token_symbol
+                ),
+                "address_feature_snapshot": self.path_resolver.build_reference(
+                    "address_feature_snapshot", token_symbol
+                ),
+                "token_prices_latest": self.path_resolver.build_reference("token_prices_latest"),
             },
             "input_snapshot": snapshot,
             "analysis": analysis,
@@ -209,12 +217,10 @@ class TokenAISummaryGenerator:
         }
 
     def _read_latest_price(self, token_symbol: str) -> dict[str, Any] | None:
-        path = self.project_root / "data" / "features" / "token_prices" / "latest.json"
-        if not path.exists():
+        try:
+            payload = self.repository.read_global_feature_dataset("token_prices_latest")
+        except FileNotFoundError:
             return None
-
-        with path.open("r", encoding="utf-8") as file:
-            payload = json.load(file)
 
         rows = payload.get("rows")
         if not isinstance(rows, list):
