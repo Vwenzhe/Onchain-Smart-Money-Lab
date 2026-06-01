@@ -1,0 +1,43 @@
+{
+  "dataset_name": "token_price_latest_snapshot",
+  "source": "coingecko",
+  "vs_currency": "usd",
+  "interval_minutes": 30,
+  "generated_at": "2026-06-01T19:57:24.478908Z",
+  "row_count": 3,
+  "rows": [
+    {
+      "token_symbol": "ETH",
+      "token_name": "Ethereum",
+      "price_usd": 2001.64,
+      "market_cap_usd": 241548115216.83588,
+      "price_change_24h_pct": 0.2344860821063451,
+      "coingecko_last_updated_at": "2026-06-01T19:57:14Z",
+      "queried_at": "2026-06-01T19:57:24.478908Z",
+      "lookup_type": "coin_id",
+      "lookup_value": "ethereum"
+    },
+    {
+      "token_symbol": "FET",
+      "token_name": "Fetch.ai",
+      "price_usd": 0.277986,
+      "market_cap_usd": 630142855.9666977,
+      "price_change_24h_pct": 2.073509593908041,
+      "coingecko_last_updated_at": "2026-06-01T19:57:07Z",
+      "queried_at": "2026-06-01T19:57:24.478908Z",
+      "lookup_type": "contract_address",
+      "lookup_value": "0xaea46a60368a7bd060eec7df8cba43b7ef41ad85"
+    },
+    {
+      "token_symbol": "PEPE",
+      "token_name": "Pepe",
+      "price_usd": 3.41e-06,
+      "market_cap_usd": 1435518606.2074966,
+      "price_change_24h_pct": 1.50185103967309,
+      "coingecko_last_updated_at": "2026-06-01T19:57:22Z",
+      "queried_at": "2026-06-01T19:57:24.478908Z",
+      "lookup_type": "contract_address",
+      "lookup_value": "0x6982508145454ce325ddbe47a25d4ec3d2311933"
+    }
+  ]
+}

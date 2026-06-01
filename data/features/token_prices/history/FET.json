@@ -1,0 +1,17 @@
+{
+  "dataset_name": "token_price_history",
+  "source": "coingecko",
+  "token_symbol": "FET",
+  "generated_at": "2026-06-01T19:57:24.478908Z",
+  "row_count": 1,
+  "rows": [
+    {
+      "bucket_start_at": "2026-06-01T19:30:00Z",
+      "queried_at": "2026-06-01T19:57:24.478908Z",
+      "coingecko_last_updated_at": "2026-06-01T19:57:07Z",
+      "price_usd": 0.277986,
+      "market_cap_usd": 630142855.9666977,
+      "price_change_24h_pct": 2.073509593908041
+    }
+  ]
+}
