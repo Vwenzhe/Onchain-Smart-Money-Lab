@@ -2,8 +2,8 @@
   "dataset_name": "token_price_history",
   "source": "coingecko",
   "token_symbol": "ETH",
-  "generated_at": "2026-06-01T19:57:24.478908Z",
-  "row_count": 1,
+  "generated_at": "2026-06-01T22:35:04.900121Z",
+  "row_count": 2,
   "rows": [
     {
       "bucket_start_at": "2026-06-01T19:30:00Z",
@@ -12,6 +12,14 @@
       "price_usd": 2001.64,
       "market_cap_usd": 241548115216.83588,
       "price_change_24h_pct": 0.2344860821063451
+    },
+    {
+      "bucket_start_at": "2026-06-01T22:30:00Z",
+      "queried_at": "2026-06-01T22:35:04.900121Z",
+      "coingecko_last_updated_at": "2026-06-01T22:35:05Z",
+      "price_usd": 1996.08,
+      "market_cap_usd": 241088594609.57104,
+      "price_change_24h_pct": -0.6372369315787737
     }
   ]
 }
