@@ -1,0 +1,74 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: onchain-backend
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+      - ./config:/app/config
+      - ./prompts:/app/prompts
+      - ./sql:/app/sql
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')",
+        ]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: onchain-frontend
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "4173:80"
+    restart: unless-stopped
+
+  price-refresher:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: onchain-price-refresher
+    profiles: ["jobs"]
+    env_file:
+      - .env
+    command: ["python", "scripts/fetch_token_prices.py"]
+    volumes:
+      - ./data:/app/data
+      - ./config:/app/config
+      - ./prompts:/app/prompts
+      - ./sql:/app/sql
+    restart: "no"
+
+  research-pipeline:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: onchain-research-pipeline
+    profiles: ["jobs"]
+    env_file:
+      - .env
+    command: ["python", "scripts/run_pipeline.py"]
+    volumes:
+      - ./data:/app/data
+      - ./config:/app/config
+      - ./prompts:/app/prompts
+      - ./sql:/app/sql
+    restart: "no"

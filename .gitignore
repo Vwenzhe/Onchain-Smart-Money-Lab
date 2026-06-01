@@ -9,6 +9,7 @@ Thumbs.db
 .idea/
 .vscode/
 .obsidian/
+.trae/
 
 # node / frontend
 node_modules/

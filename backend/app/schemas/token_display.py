@@ -31,6 +31,7 @@ class TokenAISummaryModel(BaseModel):
     market_context: str
     event_attribution: str
     risk_warning: str
+    research_conclusion: dict[str, str]
     confidence: str
 
 

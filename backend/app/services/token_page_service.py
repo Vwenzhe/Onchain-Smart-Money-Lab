@@ -83,7 +83,7 @@ class TokenPageService:
             "profitable_address_share": profitable_share,
             "top10_concentration": top10_concentration,
             "research_summary": (
-                ai_summary["trend_summary"]
+                ai_summary["research_conclusion"]["headline"]
                 if ai_summary is not None
                 else (
                     f"当前 {token_symbol} 候选聪明钱地址为 {candidate_count} 个，累计净流入约 "
@@ -91,7 +91,7 @@ class TokenPageService:
                 )
             ),
             "risk_highlight": (
-                ai_summary["risk_warning"]
+                ai_summary["research_conclusion"]["risk_evidence"]
                 if ai_summary is not None
                 else self._build_risk_highlight(top10_concentration, profitable_share)
             ),
@@ -305,6 +305,42 @@ class TokenPageService:
             "market_context": str(analysis.get("market_context", "")),
             "event_attribution": str(analysis.get("event_attribution", "")),
             "risk_warning": str(analysis.get("risk_warning", "")),
+            "research_conclusion": {
+                "headline": str(analysis.get("research_conclusion", {}).get("headline", "")),
+                "structure_stage": str(
+                    analysis.get("research_conclusion", {}).get("structure_stage", "")
+                ),
+                "structure_stage_evidence": str(
+                    analysis.get("research_conclusion", {}).get("structure_stage_evidence", "")
+                ),
+                "driver_type": str(
+                    analysis.get("research_conclusion", {}).get("driver_type", "")
+                ),
+                "driver_evidence": str(
+                    analysis.get("research_conclusion", {}).get("driver_evidence", "")
+                ),
+                "primary_risk": str(
+                    analysis.get("research_conclusion", {}).get("primary_risk", "")
+                ),
+                "risk_evidence": str(
+                    analysis.get("research_conclusion", {}).get("risk_evidence", "")
+                ),
+                "drill_down_view": str(
+                    analysis.get("research_conclusion", {}).get("drill_down_view", "")
+                ),
+                "drill_down_focus": str(
+                    analysis.get("research_conclusion", {}).get("drill_down_focus", "")
+                ),
+                "drill_down_evidence": str(
+                    analysis.get("research_conclusion", {}).get("drill_down_evidence", "")
+                ),
+                "evidence_strength": str(
+                    analysis.get("research_conclusion", {}).get("evidence_strength", "")
+                ),
+                "main_uncertainty": str(
+                    analysis.get("research_conclusion", {}).get("main_uncertainty", "")
+                ),
+            },
             "confidence": str(analysis.get("confidence", "")),
         }
 

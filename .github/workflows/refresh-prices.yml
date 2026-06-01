@@ -1,0 +1,65 @@
+name: Refresh Prices
+
+on:
+  schedule:
+    - cron: "0 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-prices
+  cancel-in-progress: false
+
+jobs:
+  refresh-prices:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install backend dependencies
+        run: pip install -r requirements.txt
+
+      - name: Create runtime .env
+        shell: bash
+        run: |
+          cat > .env <<EOF
+          LLM_PROVIDER=deepseek
+          DEEPSEEK_API_KEY=${{ secrets.DEEPSEEK_API_KEY }}
+          DEEPSEEK_BASE_URL=${{ secrets.DEEPSEEK_BASE_URL || 'https://api.deepseek.com' }}
+          DEEPSEEK_MODEL=${{ secrets.DEEPSEEK_MODEL || 'deepseek-chat' }}
+          DUNE_API_KEY=${{ secrets.DUNE_API_KEY }}
+          DUNE_BASE_URL=${{ secrets.DUNE_BASE_URL || 'https://api.dune.com/api/v1' }}
+          DUNE_TEST_QUERY_ID=${{ secrets.DUNE_TEST_QUERY_ID || '7607523' }}
+          COINGECKO_API_KEY=${{ secrets.COINGECKO_API_KEY }}
+          COINGECKO_API_PLAN=${{ secrets.COINGECKO_API_PLAN || 'auto' }}
+          EOF
+
+      - name: Refresh token prices
+        run: python scripts/fetch_token_prices.py
+
+      - name: Validate workflow outputs
+        run: python scripts/validate_workflow_outputs.py --scope prices
+
+      - name: Commit refreshed price data
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A --force data/features/token_prices
+          if git diff --cached --quiet; then
+            echo "No price changes to commit."
+            exit 0
+          fi
+          git commit -m "chore: refresh token prices"
+          git push

@@ -3,6 +3,7 @@ import { ChartsSection } from "@/features/fet-research/sections/ChartsSection";
 import { DuneEmbedSection } from "@/features/fet-research/sections/DuneEmbedSection";
 import { HeroSection } from "@/features/fet-research/sections/HeroSection";
 import { MethodologySection } from "@/features/fet-research/sections/MethodologySection";
+import { ResearchConclusionSection } from "@/features/fet-research/sections/ResearchConclusionSection";
 import { SummaryMetricsSection } from "@/features/fet-research/sections/SummaryMetricsSection";
 import { TopAddressesSection } from "@/features/fet-research/sections/TopAddressesSection";
 import type { TokenPageData } from "@/types/token-display";
@@ -18,6 +19,11 @@ export function FetResearchPage({ data, tokenConfig }: FetResearchPageProps) {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(52,211,153,0.08),_transparent_28%),radial-gradient(circle_at_bottom_right,_rgba(34,211,238,0.08),_transparent_30%)]" />
       <div className="relative mx-auto flex max-w-7xl flex-col gap-6 px-4 py-8 md:px-6 md:py-10 xl:px-0">
         <HeroSection data={data} tokenConfig={tokenConfig} />
+        <ResearchConclusionSection
+          aiSummary={data.summary.ai_summary}
+          fallbackSummary={data.summary.research_summary}
+          fallbackRisk={data.summary.risk_highlight}
+        />
         <SummaryMetricsSection summary={data.summary} tokenConfig={tokenConfig} />
         <ChartsSection
           charts={data.charts}

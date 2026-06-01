@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import argparse
 from pathlib import Path
 import sys
 from typing import Any
@@ -38,10 +39,27 @@ class WorkflowValidationError(RuntimeError):
     """Raised when required workflow artifacts are missing or invalid."""
 
 
-def validate_outputs() -> None:
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="校验工作流产物完整性")
+    parser.add_argument(
+        "--scope",
+        choices=("full", "prices"),
+        default="full",
+        help="校验范围，默认 full",
+    )
+    return parser.parse_args(argv)
+
+
+def validate_outputs(*, scope: str = "full") -> None:
     repository = FeatureStoreRepository(PROJECT_ROOT)
     config = load_project_config(PROJECT_ROOT / "config" / "tokens.json")
     enabled_tokens = [token.token_symbol.upper() for token in config.tokens]
+
+    prices_latest = repository.read_global_feature_dataset("token_prices_latest")
+    _validate_latest_prices(prices_latest, enabled_tokens)
+
+    if scope == "prices":
+        return
 
     for token_symbol in enabled_tokens:
         for dataset_key in REQUIRED_PROCESSED_DATASETS:
@@ -53,9 +71,6 @@ def validate_outputs() -> None:
 
         ai_summary = repository.read_feature_dataset("token_ai_summary", token_symbol)
         _validate_token_ai_summary(ai_summary, token_symbol=token_symbol)
-
-    prices_latest = repository.read_global_feature_dataset("token_prices_latest")
-    _validate_latest_prices(prices_latest, enabled_tokens)
 
 
 def _validate_rows_payload(payload: dict[str, Any], *, dataset_key: str, token_symbol: str) -> None:
@@ -98,13 +113,14 @@ def _validate_latest_prices(payload: dict[str, Any], enabled_tokens: list[str]) 
         )
 
 
-def main() -> None:
+def main(argv: list[str] | None = None) -> None:
+    args = parse_args(argv)
     try:
-        validate_outputs()
+        validate_outputs(scope=args.scope)
     except (DatasetNotFoundError, DatasetInvalidError, WorkflowValidationError) as exc:
         raise SystemExit(f"工作流产物校验失败: {exc}") from exc
 
-    print("工作流产物校验通过。")
+    print(f"工作流产物校验通过。scope={args.scope}")
 
 
 if __name__ == "__main__":

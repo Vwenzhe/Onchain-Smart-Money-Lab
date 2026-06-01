@@ -38,6 +38,20 @@ export type TokenAiSummary = {
   market_context: string;
   event_attribution: string;
   risk_warning: string;
+  research_conclusion: {
+    headline: string;
+    structure_stage: string;
+    structure_stage_evidence: string;
+    driver_type: string;
+    driver_evidence: string;
+    primary_risk: string;
+    risk_evidence: string;
+    drill_down_view: string;
+    drill_down_focus: string;
+    drill_down_evidence: string;
+    evidence_strength: string;
+    main_uncertainty: string;
+  };
   confidence: "low" | "medium" | "high" | string;
 };
 
