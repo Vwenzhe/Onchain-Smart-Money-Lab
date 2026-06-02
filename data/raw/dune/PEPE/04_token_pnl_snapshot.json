@@ -1,28 +1,28 @@
 {
-  "execution_id": "01KT3HBP2ZVAPJ0FBMGJ1VV7RP",
+  "execution_id": "01KT3GXJ08P8DJY7KYEFB7PQVX",
   "query_id": 7607559,
   "is_execution_finished": true,
   "state": "QUERY_STATE_COMPLETED",
-  "submitted_at": "2026-06-02T06:46:56.351974Z",
-  "expires_at": "2026-08-31T06:47:29.519663Z",
-  "execution_started_at": "2026-06-02T06:47:01.392547Z",
-  "execution_ended_at": "2026-06-02T06:47:29.519654Z",
+  "submitted_at": "2026-06-02T06:39:13.417981Z",
+  "expires_at": "2026-08-31T06:39:42.215215Z",
+  "execution_started_at": "2026-06-02T06:39:17.159136Z",
+  "execution_ended_at": "2026-06-02T06:39:42.215205Z",
   "result": {
     "rows": [
       {
-        "address_count": 34,
-        "address_share": "0.97142857142857143",
+        "address_count": 35,
+        "address_share": "1.02941176470588235",
         "as_of_date": "2026-06-02 00:00:00.000 UTC",
-        "avg_hold_days": 42.26470588235294,
-        "avg_unrealized_pnl_pct": -0.1351435306970793,
+        "avg_hold_days": 42.142857142857146,
+        "avg_unrealized_pnl_pct": -0.13303909684072424,
         "chain_name": "ethereum",
-        "median_unrealized_pnl_pct": -0.13644111496483446,
+        "median_unrealized_pnl_pct": -0.13537660597057666,
         "pnl_bucket": "loss",
         "pnl_bucket_order": 1,
         "token_name": "Pepe",
         "token_symbol": "PEPE",
-        "total_position_value_usd": 25556130.227470133,
-        "total_unrealized_pnl_usd": -4159561.969813125
+        "total_position_value_usd": 25738270.36000941,
+        "total_unrealized_pnl_usd": -4101162.146923272
       },
       {
         "address_count": 0,
@@ -117,12 +117,12 @@
         "double"
       ],
       "row_count": 5,
-      "result_set_bytes": 843,
+      "result_set_bytes": 844,
       "total_row_count": 5,
       "total_result_set_bytes": 501,
       "datapoint_count": 65,
-      "pending_time_millis": 5040,
-      "execution_time_millis": 28127
+      "pending_time_millis": 3741,
+      "execution_time_millis": 25056
     }
   }
 }

@@ -45,7 +45,6 @@ project-root/
     address_profile/
       system_prompt.md
   sql/
-    legacy/
     templates/
       eth/
         01_token_candidate_pool.sql
@@ -60,7 +59,7 @@ project-root/
 
 - `backend/`：保留最小后端层，避免把第三方 API Key 暴露到前端
 - `frontend/`：保留单页 demo 的展示层
-- `sql/`：保留原始研究脚本和统一模板
+- `sql/`：保留统一模板和渲染后的查询文件
 - `config/`：保留 token 配置入口，后续换 token 不改主逻辑
 - `data/`：保留手动导出和特征结果存放位置
 - `docs/`：保留方法说明和字段契约，适合作品集展示
@@ -81,7 +80,6 @@ project-root/
 
 ## 5. 目录放置规则
 
-- 原始研究 SQL 放在 `sql/legacy/`
 - 统一模板 SQL 放在 `sql/templates/eth/`
 - token 配置放在 `config/tokens/`
 - 手动导出的原始或处理结果放在 `data/`

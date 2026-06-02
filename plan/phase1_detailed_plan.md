@@ -56,7 +56,6 @@ project-root/
     senior-architect-agent.md
     senior-sql-developer-agent.md
   sql/
-    legacy/
     templates/
       eth/
         01_token_candidate_pool.sql
@@ -97,7 +96,7 @@ project-root/
 这个结构是更适合当前 demo 阶段的收敛版本：
 
 - 配置层、分析层、特征层、AI 提示词层、展示层都有明确落点
-- `sql/legacy/` 保留原始研究脚本，`sql/templates/eth/` 放阶段一统一模板
+- `sql/templates/eth/` 放阶段一统一模板，旧研究脚本已完成迁移并从仓库移除
 - `docs/data-contracts/` 统一沉淀特征层契约和指标口径
 - `plan/` 专门放规划文档，避免根目录继续堆计划文件
 - API 密钥通过根目录 `.env` 本地保存，仓库只提交 `.env.example`

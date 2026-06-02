@@ -1,43 +1,43 @@
 {
-  "execution_id": "01KT3H76GWF0QQ8HZRXFM5DVMQ",
+  "execution_id": "01KT3GSE65TKP8XEKN5K3MPVYZ",
   "query_id": 7607559,
   "is_execution_finished": true,
   "state": "QUERY_STATE_COMPLETED",
-  "submitted_at": "2026-06-02T06:44:29.341285Z",
-  "expires_at": "2026-08-31T06:44:55.266158Z",
-  "execution_started_at": "2026-06-02T06:44:33.31024Z",
-  "execution_ended_at": "2026-06-02T06:44:55.266148Z",
+  "submitted_at": "2026-06-02T06:36:58.437816Z",
+  "expires_at": "2026-08-31T06:37:30.943853Z",
+  "execution_started_at": "2026-06-02T06:37:02.236236Z",
+  "execution_ended_at": "2026-06-02T06:37:30.94384Z",
   "result": {
     "rows": [
       {
-        "address_count": 564,
-        "address_share": "1.00000000000000000",
+        "address_count": 566,
+        "address_share": "1.00176991150442478",
         "as_of_date": "2026-06-02 00:00:00.000 UTC",
-        "avg_hold_days": 41.02836879432624,
-        "avg_unrealized_pnl_pct": -0.11405143172631299,
+        "avg_hold_days": 40.987632508833926,
+        "avg_unrealized_pnl_pct": -0.11505315841462949,
         "chain_name": "ethereum",
-        "median_unrealized_pnl_pct": -0.1179956151396225,
+        "median_unrealized_pnl_pct": -0.11902163420097184,
         "pnl_bucket": "loss",
         "pnl_bucket_order": 1,
         "token_name": "Ether",
         "token_symbol": "ETH",
-        "total_position_value_usd": 450706160.1061267,
-        "total_unrealized_pnl_usd": -51794243.819380194
+        "total_position_value_usd": 450199904.1185448,
+        "total_unrealized_pnl_usd": -52290792.91510721
       },
       {
         "address_count": 1,
-        "address_share": "0.00177304964539007",
+        "address_share": "0.00176991150442478",
         "as_of_date": "2026-06-02 00:00:00.000 UTC",
         "avg_hold_days": 45,
-        "avg_unrealized_pnl_pct": 0.008927594566031918,
+        "avg_unrealized_pnl_pct": 0.00781781442881089,
         "chain_name": "ethereum",
-        "median_unrealized_pnl_pct": 0.008927594566031918,
+        "median_unrealized_pnl_pct": 0.00781781442881089,
         "pnl_bucket": "0_10_pct",
         "pnl_bucket_order": 2,
         "token_name": "Ether",
         "token_symbol": "ETH",
-        "total_position_value_usd": 11746.34831914044,
-        "total_unrealized_pnl_usd": 103.93871273763943
+        "total_position_value_usd": 11733.4278042088,
+        "total_unrealized_pnl_usd": 91.0181978070541
       },
       {
         "address_count": 0,
@@ -117,12 +117,12 @@
         "double"
       ],
       "row_count": 5,
-      "result_set_bytes": 916,
+      "result_set_bytes": 912,
       "total_row_count": 5,
       "total_result_set_bytes": 501,
       "datapoint_count": 65,
-      "pending_time_millis": 3968,
-      "execution_time_millis": 21955
+      "pending_time_millis": 3798,
+      "execution_time_millis": 28707
     }
   }
 }

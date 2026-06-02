@@ -30,6 +30,7 @@ class TokenConfig:
     min_net_flow_usd: float
     is_enabled: bool = True
     dune_query_ids: dict[str, int] | None = None
+    address_profile_limit: int | None = None
 
     @classmethod
     def from_dict(cls, payload: dict[str, Any]) -> "TokenConfig":
@@ -51,6 +52,11 @@ class TokenConfig:
                 for key, value in dict(payload.get("dune_query_ids", {})).items()
             }
             or None,
+            address_profile_limit=(
+                int(payload["address_profile_limit"])
+                if payload.get("address_profile_limit") is not None
+                else None
+            ),
         )
 
 

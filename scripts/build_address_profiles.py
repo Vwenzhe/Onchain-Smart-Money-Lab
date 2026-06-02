@@ -12,11 +12,24 @@ from backend.app.services.address_profile_generator import AddressProfileBatchGe
 from backend.app.services.env_loader import load_project_env
 from token_batch_utils import (
     DEFAULT_CONFIG_PATH,
+    resolve_enabled_token,
     resolve_feature_output_path,
     resolve_processed_input_path,
 )
 
 DEFAULT_TOKEN_SYMBOL = "FET"
+
+
+def resolve_profile_limit(
+    *,
+    config_path: Path,
+    token_symbol: str,
+    limit: int | None,
+) -> int | None:
+    if limit is not None:
+        return limit
+    token = resolve_enabled_token(config_path, token_symbol)
+    return token.address_profile_limit
 
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
@@ -81,6 +94,11 @@ def run_batch(
     timeout: int = 60,
 ) -> Path:
     token_symbol = token_symbol.upper()
+    effective_limit = resolve_profile_limit(
+        config_path=config_path,
+        token_symbol=token_symbol,
+        limit=limit,
+    )
     env_path = load_project_env(PROJECT_ROOT / ".env")
     generator = AddressProfileBatchGenerator(
         project_root=PROJECT_ROOT,
@@ -98,7 +116,7 @@ def run_batch(
         input_path=resolved_input_path,
         output_path=resolved_output_path,
         token_symbol=token_symbol,
-        limit=limit,
+        limit=effective_limit,
     )
 
 
@@ -114,12 +132,16 @@ def run_all_enabled(
     outputs: list[Path] = []
     for token in load_enabled_tokens(config_path):
         token_symbol = token.token_symbol.upper()
-        print(f"开始生成地址画像: {token_symbol}")
+        effective_limit = limit if limit is not None else token.address_profile_limit
+        if effective_limit is None:
+            print(f"开始生成地址画像: {token_symbol}（全量）")
+        else:
+            print(f"开始生成地址画像: {token_symbol}（最多 {effective_limit} 条）")
         outputs.append(
             run_batch(
                 config_path=config_path,
                 token_symbol=token_symbol,
-                limit=limit,
+                limit=effective_limit,
                 max_retries=max_retries,
                 timeout=timeout,
             )

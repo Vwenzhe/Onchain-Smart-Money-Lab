@@ -2,7 +2,7 @@
   "dataset_name": "token_ai_summary",
   "token_symbol": "FET",
   "token_name": "Fetch.ai",
-  "generated_at": "2026-06-02T07:06:05.764184+00:00",
+  "generated_at": "2026-06-02T06:56:54.200428+00:00",
   "model_provider": "deepseek",
   "model_name": "deepseek-chat",
   "generation_status": "success",
@@ -34,22 +34,22 @@
     "token_name": "Fetch.ai",
     "chain_name": "ethereum",
     "overview_as_of_date": "2026-06-02 00:00:00.000 UTC",
-    "price_cache_generated_at": "2026-06-02T06:47:33.504148Z",
-    "price_cache_last_updated_at": "2026-06-02T06:47:24Z",
-    "latest_price_usd": 0.271857,
-    "snapshot_price_usd": 0.2728980384615385,
-    "price_change_vs_snapshot_pct": -0.003814752452627795,
+    "price_cache_generated_at": "2026-06-02T06:39:44.424923Z",
+    "price_cache_last_updated_at": "2026-06-02T06:39:44Z",
+    "latest_price_usd": 0.272085,
+    "snapshot_price_usd": 0.2729491948051948,
+    "price_change_vs_snapshot_pct": -0.003166137954030473,
     "derived_metrics": {
-      "top_position_concentration": 0.5481032476491038,
+      "top_position_concentration": 0.5421176308178783,
       "profitable_address_share": 1.0,
       "dominant_pnl_bucket": "10_30_pct",
-      "recent_3row_net_flow_usd": 25521844.130199734,
-      "previous_3row_net_flow_usd": 33083474.620499544,
-      "recent_address_count_delta": -8,
-      "total_position_value_usd": 15750979.883685574,
-      "total_unrealized_pnl_usd": 2740421.918705802,
-      "avg_buy_price_usd_weighted": 0.22216437869541567,
-      "price_vs_avg_cost_pct": 0.22367501755406188
+      "recent_3row_net_flow_usd": 25811867.512767553,
+      "previous_3row_net_flow_usd": 33011460.886950497,
+      "recent_address_count_delta": -7,
+      "total_position_value_usd": 15910437.343280602,
+      "total_unrealized_pnl_usd": 2751939.9309946545,
+      "avg_buy_price_usd_weighted": 0.22238076391950476,
+      "price_vs_avg_cost_pct": 0.22350960219961616
     },
     "preliminary_analysis": {
       "structure_stage_hint": "高位分歧",
@@ -60,61 +60,61 @@
       "dominant_pnl_bucket_hint": "10_30_pct"
     },
     "latest_overview": {
-      "candidate_address_count": 6,
+      "candidate_address_count": 7,
       "eligible_address_count": 35,
-      "candidate_net_flow_usd": 4683055.440386217,
-      "candidate_avg_net_flow_usd": 780509.2400643695,
-      "candidate_net_position_token": 19566711.322564345,
-      "token_price_usd": 0.2728980384615385
+      "candidate_net_flow_usd": 5193436.721964805,
+      "candidate_avg_net_flow_usd": 741919.5317092579,
+      "candidate_net_position_token": 22445666.574746847,
+      "token_price_usd": 0.2729491948051948
     },
     "recent_overview": [
       {
         "as_of_date": "2026-06-02 00:00:00.000 UTC",
-        "candidate_address_count": 6,
-        "candidate_net_flow_usd": 4683055.440386217,
-        "candidate_net_position_token": 19566711.322564345,
-        "token_price_usd": 0.2728980384615385
+        "candidate_address_count": 7,
+        "candidate_net_flow_usd": 5193436.721964805,
+        "candidate_net_position_token": 22445666.574746847,
+        "token_price_usd": 0.2729491948051948
       },
       {
         "as_of_date": "2026-06-01 00:00:00.000 UTC",
-        "candidate_address_count": 15,
-        "candidate_net_flow_usd": 10053257.099282365,
-        "candidate_net_position_token": 49786734.0843728,
+        "candidate_address_count": 14,
+        "candidate_net_flow_usd": 9859530.111918937,
+        "candidate_net_position_token": 48981601.219750695,
         "token_price_usd": 0.27373382291666676
       },
       {
         "as_of_date": "2026-05-31 00:00:00.000 UTC",
         "candidate_address_count": 11,
-        "candidate_net_flow_usd": 10785531.590531152,
-        "candidate_net_position_token": 50064779.50640084,
-        "token_price_usd": 0.27072572916666654
+        "candidate_net_flow_usd": 10758900.67888381,
+        "candidate_net_position_token": 49949258.632032126,
+        "token_price_usd": 0.27072572916666676
       },
       {
         "as_of_date": "2026-05-30 00:00:00.000 UTC",
         "candidate_address_count": 13,
-        "candidate_net_flow_usd": 11449399.337679284,
-        "candidate_net_position_token": 53201924.46521171,
-        "token_price_usd": 0.2588331736111111
+        "candidate_net_flow_usd": 11422768.42603194,
+        "candidate_net_position_token": 53086403.590843,
+        "token_price_usd": 0.2588331736111112
       },
       {
         "as_of_date": "2026-05-29 00:00:00.000 UTC",
         "candidate_address_count": 16,
-        "candidate_net_flow_usd": 11016107.932692701,
-        "candidate_net_position_token": 52742343.91200784,
+        "candidate_net_flow_usd": 10988765.812406173,
+        "candidate_net_position_token": 52623737.921930514,
         "token_price_usd": 0.24236675694444443
       },
       {
         "as_of_date": "2026-05-28 00:00:00.000 UTC",
         "candidate_address_count": 16,
-        "candidate_net_flow_usd": 10617967.350127561,
-        "candidate_net_position_token": 51071734.38642648,
+        "candidate_net_flow_usd": 10599926.648512382,
+        "candidate_net_position_token": 50993476.54634917,
         "token_price_usd": 0.226507715277777
       },
       {
         "as_of_date": "2026-05-27 00:00:00.000 UTC",
         "candidate_address_count": 14,
-        "candidate_net_flow_usd": 10816203.33587055,
-        "candidate_net_position_token": 51145561.367081255,
+        "candidate_net_flow_usd": 10788861.21558402,
+        "candidate_net_position_token": 51026955.377003945,
         "token_price_usd": 0.24375011111111095
       }
     ],
@@ -131,28 +131,28 @@
       {
         "pnl_bucket": "0_10_pct",
         "address_count": 1,
-        "avg_unrealized_pnl_pct": 0.09770518240991581,
-        "median_unrealized_pnl_pct": 0.09770518240991581,
-        "total_position_value_usd": 647042.1870707292,
-        "total_unrealized_pnl_usd": 57592.30796001514,
+        "avg_unrealized_pnl_pct": 0.09741949067709128,
+        "median_unrealized_pnl_pct": 0.09741949067709128,
+        "total_position_value_usd": 635576.414778352,
+        "total_unrealized_pnl_usd": 56421.02326420008,
         "avg_hold_days": 45.0
       },
       {
         "pnl_bucket": "10_30_pct",
         "address_count": 16,
-        "avg_unrealized_pnl_pct": 0.2048172115991105,
-        "median_unrealized_pnl_pct": 0.19394107638441338,
-        "total_position_value_usd": 14987147.474587431,
-        "total_unrealized_pnl_usd": 2620300.1405098797,
+        "avg_unrealized_pnl_pct": 0.20450364259858667,
+        "median_unrealized_pnl_pct": 0.19363033803638674,
+        "total_position_value_usd": 14962110.017382849,
+        "total_unrealized_pnl_usd": 2612959.74543518,
         "avg_hold_days": 41.75
       },
       {
         "pnl_bucket": "30_60_pct",
         "address_count": 1,
-        "avg_unrealized_pnl_pct": 0.3593519603049151,
-        "median_unrealized_pnl_pct": 0.3593519603049151,
-        "total_position_value_usd": 312289.8017540607,
-        "total_unrealized_pnl_usd": 82555.47916992934,
+        "avg_unrealized_pnl_pct": 0.3589981716708803,
+        "median_unrealized_pnl_pct": 0.3589981716708803,
+        "total_position_value_usd": 312208.524361885,
+        "total_unrealized_pnl_usd": 82474.20177775196,
         "avg_hold_days": 5.0
       },
       {
@@ -171,70 +171,70 @@
         "as_of_date": "2026-05-31 00:00:00.000 UTC",
         "active_days": 22,
         "hold_days_est": 42,
-        "net_flow_usd": 1873931.3000267893,
-        "position_value_usd": 2076484.5504058537,
-        "unrealized_pnl_pct": 0.19394107638441305
+        "net_flow_usd": 1873931.3000267886,
+        "position_value_usd": 2075944.1188957402,
+        "unrealized_pnl_pct": 0.1936303380363863
       },
       {
         "address_key": "0xe35d9a2f30cfbec951e85f2535328e7b1e191aa9",
         "as_of_date": "2026-06-01 00:00:00.000 UTC",
         "active_days": 16,
         "hold_days_est": 40,
-        "net_flow_usd": 1530279.9695780855,
-        "position_value_usd": 2042569.132420903,
-        "unrealized_pnl_pct": 0.28293694185495893
+        "net_flow_usd": 1530279.9695780862,
+        "position_value_usd": 2042037.5278296103,
+        "unrealized_pnl_pct": 0.28260304120121604
       },
       {
         "address_key": "0x28c6c06298d514db089934071355e5743bf21d60",
         "as_of_date": "2026-06-02 00:00:00.000 UTC",
         "active_days": 46,
         "hold_days_est": 45,
-        "net_flow_usd": 384637.22321949207,
-        "position_value_usd": 1853182.613988532,
-        "unrealized_pnl_pct": 0.2199473573460943
+        "net_flow_usd": 379846.63670927734,
+        "position_value_usd": 1847112.5600735696,
+        "unrealized_pnl_pct": 0.21962985053273765
       },
       {
         "address_key": "0xffa8db7b38579e6a2d14f9b347a9ace4d044cd54",
         "as_of_date": "2026-06-02 00:00:00.000 UTC",
         "active_days": 35,
         "hold_days_est": 44,
-        "net_flow_usd": 1193515.3575583738,
-        "position_value_usd": 1335142.6048960139,
-        "unrealized_pnl_pct": 0.15830712000614935
+        "net_flow_usd": 1193515.3575583745,
+        "position_value_usd": 1334795.1170545858,
+        "unrealized_pnl_pct": 0.1580056558484137
       },
       {
         "address_key": "0xe92e65049b3c2ca12806e9567b08895118c5a03f",
         "as_of_date": "2026-06-02 00:00:00.000 UTC",
         "active_days": 42,
         "hold_days_est": 45,
-        "net_flow_usd": 1089970.1584564128,
-        "position_value_usd": 1325784.3261924647,
-        "unrealized_pnl_pct": 0.19352979724144292
+        "net_flow_usd": 1089970.1584564114,
+        "position_value_usd": 1325439.2739620733,
+        "unrealized_pnl_pct": 0.193219165934043
       }
     ],
-    "top_position_concentration": 0.5481032476491038,
-    "total_position_value_usd": 15750979.883685574,
+    "top_position_concentration": 0.5421176308178783,
+    "total_position_value_usd": 15910437.343280602,
     "snapshot_gap_days": 0.0
   },
   "analysis": {
-    "trend_summary": "FET 价格在 0.27 美元附近窄幅整理，近三日净流入约 2552 万美元，但较前一期有所回落。",
-    "market_context": "全部候选地址均处于盈利状态，PnL 集中在 10%-30% 区间，头部 5 地址持仓占比约 54.8%，结构偏集中。",
-    "event_attribution": "当前价格波动更接近前期持续净流入后的整理阶段，近三日净流入虽仍为正但已较前一期下降约 23%，增量驱动边际减弱。",
-    "risk_warning": "快照仅覆盖 35 个候选地址，样本量有限；价格缓存时间与链上快照时间基本一致，但快照口径可能无法完全反映连续行为。",
-    "confidence": "medium",
+    "trend_summary": "FET 价格近一周从 0.2265 美元持续上涨至 0.2729 美元，涨幅约 20.5%，但近 24 小时价格基本持平。同期候选地址净流入持续为正，但近三日净流入规模较前一周有所回落。",
+    "market_context": "全部候选地址均处于盈利状态，其中 16 个地址盈利在 10%-30% 区间，占持仓总价值的 94%。头部 5 个地址持仓集中度约 54%，且近一周持续净流入，整体仓位结构偏向持有。",
+    "event_attribution": "当前价格波动更接近存量持仓盈利扩张后的高位整理。近一周价格持续上行，全部地址盈利，且 10%-30% 盈利区间地址占主导，增量净流入虽仍为正但规模边际减弱，不支持强归因于新增资金驱动。",
+    "risk_warning": "候选地址仅 7 个，样本量极小，快照口径可能无法代表整体市场行为。价格已较平均成本上涨约 22%，若后续净流入持续性减弱，短期止盈压力可能增加。",
+    "confidence": "low",
     "research_conclusion": {
-      "headline": "FET 处于高位分歧阶段，存量盈利主导，需验证快照是否失真。",
+      "headline": "FET 处于高位分歧阶段，存量盈利主导，样本量偏小需谨慎验证",
       "structure_stage": "高位分歧",
-      "structure_stage_evidence": "全部地址盈利且 PnL 集中在 10%-30%，但近三日净流入较前期回落，价格未继续上行，更接近高位分歧特征。",
+      "structure_stage_evidence": "价格近一周持续上涨后近 24 小时走平，全部地址盈利且集中在 10%-30% 区间，净流入边际回落，更接近高位分歧而非继续扩张。",
       "driver_type": "存量盈利主导",
-      "driver_evidence": "近三日净流入 2552 万美元，低于前一期 3308 万美元，增量流入边际减弱；全部地址盈利且平均浮盈约 22%，存量盈利是当前主要支撑。",
+      "driver_evidence": "近三日净流入 2581 万美元，低于前一周的 3301 万美元，且候选地址数量从 16 个降至 7 个，增量流入动能减弱，当前价格主要由已有持仓的盈利状态支撑。",
       "primary_risk": "快照偏差风险",
-      "risk_evidence": "候选地址仅 35 个，样本量偏小；快照时点为 2026-06-02，但部分头部地址数据来自 05-31 或 06-01，存在时间口径不一致。",
+      "risk_evidence": "候选地址仅 7 个，且快照时间（2026-06-02）与价格缓存时间（2026-06-02T06:39）基本一致，但样本量极小，快照口径可能无法反映全市场行为。",
       "drill_down_view": "值得继续下钻",
-      "drill_down_focus": "第二层趋势图与第三层代表性地址样本，验证快照是否失真。",
-      "drill_down_evidence": "初步分析提示快照可能失真，且净流入持续性减弱，需通过更细粒度数据确认结构是否稳定。",
-      "evidence_strength": "中",
-      "main_uncertainty": "当前结论依赖单次快照，样本量有限且部分头部地址数据时间口径不一致，无法排除快照失真或短期行为干扰。"
+      "drill_down_focus": "第二层趋势图与第三层代表性地址样本，验证快照是否失真",
+      "drill_down_evidence": "当前样本量过小，且头部地址集中度较高，需通过更长时间维度的趋势图和具体地址行为来验证当前结构是否具有代表性。",
+      "evidence_strength": "弱",
+      "main_uncertainty": "主要不确定性在于候选地址仅 7 个，样本量不足以支撑强结论。当前结构信号可能仅反映局部行为，仍需更多数据验证其普遍性。"
     }
   }
 }
