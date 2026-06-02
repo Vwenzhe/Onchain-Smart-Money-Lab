@@ -1,0 +1,346 @@
+{
+  "dataset_name": "token_address_profiles",
+  "source_dataset": "address_feature_snapshot",
+  "token_symbol": "PEPE",
+  "model_provider": "deepseek",
+  "model_name": "deepseek-chat",
+  "generated_at": "2026-06-02T07:06:00.250866+00:00",
+  "input_row_count": 33,
+  "processed_row_count": 33,
+  "success_count": 33,
+  "fallback_count": 0,
+  "error_count": 0,
+  "rows": [
+    {
+      "address_key": "0xefef30bd1cca520619306c95091ab18473febc5c",
+      "token_symbol": "PEPE",
+      "as_of_date": "2026-06-02 00:00:00.000 UTC",
+      "profile_label": "深度持有型",
+      "risk_note": "当前浮亏约15.2%，若价格持续下行，仓位价值将进一步缩水。",
+      "summary": "该地址于2026年4月18日首次买入PEPE，持有约45天，期间净流入约745万美元，当前仓位价值约622万美元。行为上呈现持续建仓并长期持有的特征，属于深度持有型地址。",
+      "generation_status": "success",
+      "error_code": null
+    },
+    {
+      "address_key": "0xc671b05671a7cd3080c6ceae79d284bdde0ef271",
+      "token_symbol": "PEPE",
+      "as_of_date": "2026-06-01 00:00:00.000 UTC",
+      "profile_label": "早期埋伏型",
+      "risk_note": "当前浮亏约13.8%，若价格持续下行，仓位价值将进一步缩水。",
+      "summary": "该地址于2026年4月18日首次买入PEPE，持有44天，期间净流入约472万美元，属于早期建仓行为。当前持仓价值约406万美元，处于浮亏状态，暂无明显卖出动作。",
+      "generation_status": "success",
+      "error_code": null
+    },
+    {
+      "address_key": "0xb0a27099582833c0cb8c7a0565759ff145113d64",
+      "token_symbol": "PEPE",
+      "as_of_date": "2026-06-02 00:00:00.000 UTC",
+      "profile_label": "早期埋伏型",
+      "risk_note": "当前浮亏约15%，若价格持续下行，仓位面临进一步缩水风险。",
+      "summary": "该地址于2026年4月18日首次买入PEPE，持有约45天，累计净流入约250万美元，平均买入成本约3.93e-06美元，当前价格3.32e-06美元，浮亏约15%。属于早期大额建仓、尚未离场的持有型地址。",
+      "generation_status": "success",
+      "error_code": null
+    },
+    {
+      "address_key": "0x611f7bf868a6212f871e89f7e44684045ddfb09d",
+      "token_symbol": "PEPE",
+      "as_of_date": "2026-05-23 00:00:00.000 UTC",
+      "profile_label": "早期埋伏型",
+      "risk_note": "当前浮亏约16%，若价格持续下行，仓位价值可能进一步缩水。",
+      "summary": "该地址在34天前以极低均价建仓PEPE，净流入约206万美元，目前仓位价值约176万美元，处于浮亏状态，呈现早期埋伏特征。",
+      "generation_status": "success",
+      "error_code": null
+    },
+    {
+      "address_key": "0xffa8db7b38579e6a2d14f9b347a9ace4d044cd54",
+      "token_symbol": "PEPE",
+      "as_of_date": "2026-05-28 00:00:00.000 UTC",
+      "profile_label": "待定观察型",
+      "risk_note": "当前浮亏约12.5%，且持有时间仅38天，尚无法判断其后续操作意图。",
+      "summary": "该地址于2026年4月20日首次买入PEPE，持有38天，累计净流入约162万美元，当前仓位价值约133.8万美元，处于浮亏状态。由于持有时间较短且盈亏方向未明朗，暂归为待定观察型。",
+      "generation_status": "success",
+      "error_code": null
+    },
+    {
+      "address_key": "0xa29e963992597b21bcdcaa969d571984869c4ff5",
+      "token_symbol": "PEPE",
+      "as_of_date": "2026-06-01 00:00:00.000 UTC",
+      "profile_label": "早期埋伏型",
+      "risk_note": "当前浮亏约15.7%，若价格持续下行，仓位存在进一步缩水风险。",
+      "summary": "该地址于26天前首次买入PEPE，持有约42天，累计净流入约101万美元，当前仓位价值约86.5万美元，平均买入价略高于现价，呈现早期建仓后浮亏状态。",
+      "generation_status": "success",
+      "error_code": null
+    },
+    {
+      "address_key": "0x9c87e5efc511e27739abc88ad2bd8db304de3e27",
+      "token_symbol": "PEPE",
+      "as_of_date": "2026-06-02 00:00:00.000 UTC",
+      "profile_label": "深度持有型",
+      "risk_note": "当前浮亏约2.7%，若价格持续下行，仓位价值可能进一步缩水。",
+      "summary": "该地址自2026年4月20日首次买入PEPE，持有43天，净流入约85.8万美元，当前仓位价值约85.3万美元，呈现深度持有特征。",
+      "generation_status": "success",
+      "error_code": null
+    },
+    {
+      "address_key": "0x76ec5a0d3632b2133d9f1980903305b62678fbd3",
+      "token_symbol": "PEPE",
+      "as_of_date": "2026-05-28 00:00:00.000 UTC",
+      "profile_label": "深度持有型",
+      "risk_note": "当前浮亏约13.6%，若价格持续下行，仓位面临较大回撤风险。",
+      "summary": "该地址在40天内持续建仓，净流入约83万美元，当前仓位价值约82.7万美元，且未出现明显分发行为，属于深度持有型地址。",
+      "generation_status": "success",
+      "error_code": null
+    },
+    {
+      "address_key": "0xc333e80ef2dec2805f239e3f1e810612d294f771",
+      "token_symbol": "PEPE",
+      "as_of_date": "2026-06-01 00:00:00.000 UTC",
+      "profile_label": "早期埋伏型",
+      "risk_note": "当前处于浮亏状态，且持有时间较短，价格波动风险较高。",
+      "summary": "该地址于2026年4月20日首次买入PEPE，持有约42天，当前仓位价值约76.8万美元，浮亏约12.47%，属于早期建仓但尚未盈利的阶段。",
+      "generation_status": "success",
+      "error_code": null
+    },
+    {
+      "address_key": "0x15da7556d5ed888306839bed06f868aeaedcb0d7",
+      "token_symbol": "PEPE",
+      "as_of_date": "2026-05-29 00:00:00.000 UTC",
+      "profile_label": "早期埋伏型",
+      "risk_note": "当前浮亏约12.86%，若价格持续下行，仓位价值将进一步缩水。",
+      "summary": "该地址于2026年4月21日首次买入PEPE，持有约38天，净流入约80.36万美元，当前仓位价值约73.58万美元，呈现早期大额建仓特征，但当前处于浮亏状态。",
+      "generation_status": "success",
+      "error_code": null
+    },
+    {
+      "address_key": "0xf8191d98ae98d2f7abdfb63a9b0b812b93c873aa",
+      "token_symbol": "PEPE",
+      "as_of_date": "2026-06-02 00:00:00.000 UTC",
+      "profile_label": "深度持有型",
+      "risk_note": "当前浮亏约14.3%，若价格持续下行，仓位价值将进一步缩水。",
+      "summary": "该地址自2026年4月18日开始建仓PEPE，持有约45天，期间净流入约75.6万美元，当前仓位价值约69.7万美元，呈现深度持有特征。",
+      "generation_status": "success",
+      "error_code": null
+    },
+    {
+      "address_key": "0x608c27519c5e65a61cfc1d2c9e658e5c57a2e3d7",
+      "token_symbol": "PEPE",
+      "as_of_date": "2026-06-01 00:00:00.000 UTC",
+      "profile_label": "深度持有型",
+      "risk_note": "当前浮亏约13.9%，若价格持续下行，仓位价值可能进一步缩水。",
+      "summary": "该地址在41个活跃日内持续净流入约70.5万美元，持有PEPE超过42天，平均建仓成本约3.86e-06美元，当前价格低于成本，呈现深度持有特征。",
+      "generation_status": "success",
+      "error_code": null
+    },
+    {
+      "address_key": "0x700e0841ce0892969d2f9cf523c6298b3ef056a6",
+      "token_symbol": "PEPE",
+      "as_of_date": "2026-06-02 00:00:00.000 UTC",
+      "profile_label": "深度持有型",
+      "risk_note": "当前浮亏约12%，若价格持续下行，仓位价值将进一步缩水。",
+      "summary": "该地址于2026年4月18日首次买入PEPE，持有45天，期间净流入约54.7万美元，仓位价值约56万美元，呈现持续建仓并长期持有的行为特征，属于深度持有型地址。",
+      "generation_status": "success",
+      "error_code": null
+    },
+    {
+      "address_key": "0xf440139a62b2b939699c5b3e09f88e40464ab9bc",
+      "token_symbol": "PEPE",
+      "as_of_date": "2026-06-02 00:00:00.000 UTC",
+      "profile_label": "深度持有型",
+      "risk_note": "当前浮亏约14%，若价格持续下行，仓位价值可能进一步缩水。",
+      "summary": "该地址自2026年4月19日起持续持有PEPE，已持仓44天，期间未出现明显卖出行为，属于深度持有型。当前浮亏约14%，需关注后续价格走势。",
+      "generation_status": "success",
+      "error_code": null
+    },
+    {
+      "address_key": "0xc80afd311c9626528de66d86814770361fe92416",
+      "token_symbol": "PEPE",
+      "as_of_date": "2026-06-02 00:00:00.000 UTC",
+      "profile_label": "深度持有型",
+      "risk_note": "当前浮亏约12.6%，若价格持续下行可能进一步扩大亏损。",
+      "summary": "该地址于46天前首次买入PEPE，持有44天，期间净流入约40.7万美元，仓位价值约43万美元，呈现持续建仓并长期持有的行为特征。当前价格低于平均买入价，处于浮亏状态，暂无明显减仓迹象。",
+      "generation_status": "success",
+      "error_code": null
+    },
+    {
+      "address_key": "0x91d40e4818f4d4c57b4578d9eca6afc92ac8debe",
+      "token_symbol": "PEPE",
+      "as_of_date": "2026-06-02 00:00:00.000 UTC",
+      "profile_label": "深度持有型",
+      "risk_note": "持仓浮亏约14.6%，且持有期较长，若价格持续下行可能面临较大回撤。",
+      "summary": "该地址在约45天前以均价3.89e-06美元建仓PEPE，目前持仓价值约37万美元，浮亏约14.6%。整体表现为持续持有、未明显减仓，属于深度持有型行为。",
+      "generation_status": "success",
+      "error_code": null
+    },
+    {
+      "address_key": "0x167a9333bf582556f35bd4d16a7e80e191aa6476",
+      "token_symbol": "PEPE",
+      "as_of_date": "2026-06-02 00:00:00.000 UTC",
+      "profile_label": "早期埋伏型",
+      "risk_note": "当前浮亏约11.7%，若价格持续下行，仓位可能面临进一步回撤。",
+      "summary": "该地址于2026年4月18日首次买入PEPE，持有45天，累计净流入约31.9万美元，平均买入价低于当前市价，呈现早期建仓特征。目前处于浮亏状态，暂无明显卖出行为。",
+      "generation_status": "success",
+      "error_code": null
+    },
+    {
+      "address_key": "0x3563015e9f5694afe5d8cd86233f77557da704cc",
+      "token_symbol": "PEPE",
+      "as_of_date": "2026-06-02 00:00:00.000 UTC",
+      "profile_label": "早期埋伏型",
+      "risk_note": "当前浮亏约14.8%，若价格持续下行，仓位价值将进一步缩水。",
+      "summary": "该地址于2026年4月20日首次买入PEPE，持有43天，期间净流入约30.4万美元，平均买入价约0.0000039美元，当前价格略低于成本价，处于浮亏状态。整体呈现早期建仓、持续持有的行为特征。",
+      "generation_status": "success",
+      "error_code": null
+    },
+    {
+      "address_key": "0xcffad3200574698b78f32232aa9d63eabd290703",
+      "token_symbol": "PEPE",
+      "as_of_date": "2026-06-02 00:00:00.000 UTC",
+      "profile_label": "早期埋伏型",
+      "risk_note": "当前浮亏约14.8%，若价格持续下行，仓位价值将进一步缩水。",
+      "summary": "该地址于2026年4月18日首次买入PEPE，持有约45天，累计净流入约25.5万美元，属于早期建仓行为。当前价格低于平均买入价，处于浮亏状态，但仓位规模较大，表现出较强的持有意愿。",
+      "generation_status": "success",
+      "error_code": null
+    },
+    {
+      "address_key": "0x4d5fa1839aed8dce51c5fe3bc23f4fc08e02702e",
+      "token_symbol": "PEPE",
+      "as_of_date": "2026-06-02 00:00:00.000 UTC",
+      "profile_label": "深度持有型",
+      "risk_note": "当前浮亏约13%，且持有时间仅40天，若价格持续下行可能触发止损或减仓。",
+      "summary": "该地址在39个活跃日内持续净买入约22.7万美元，平均建仓成本约3.82e-06美元，当前价格低于成本，浮亏约13%。整体呈现深度持有、暂未分发的行为特征。",
+      "generation_status": "success",
+      "error_code": null
+    },
+    {
+      "address_key": "0xa03400e098f4421b34a3a44a1b4e571419517687",
+      "token_symbol": "PEPE",
+      "as_of_date": "2026-06-01 00:00:00.000 UTC",
+      "profile_label": "深度持有型",
+      "risk_note": "当前浮亏约12.6%，若价格持续下行可能面临较大回撤。",
+      "summary": "该地址在44天前以约3.80e-06美元均价首次买入PEPE，期间净流入约18.6万美元，当前持仓价值约18.2万美元，呈现持续建仓且未明显分发的特征，属于深度持有型地址。",
+      "generation_status": "success",
+      "error_code": null
+    },
+    {
+      "address_key": "0x377b8ce04761754e8ac153b47805a9cf6b190873",
+      "token_symbol": "PEPE",
+      "as_of_date": "2026-06-02 00:00:00.000 UTC",
+      "profile_label": "早期埋伏型",
+      "risk_note": "当前浮亏约10.6%，且持有时间仅44天，价格波动风险较高。",
+      "summary": "该地址于2026年4月19日首次买入PEPE，持有44天，净流入约19.7万美元，当前仓位价值约17.6万美元，处于小幅浮亏状态。行为模式符合早期埋伏特征，但尚未经历完整价格周期验证。",
+      "generation_status": "success",
+      "error_code": null
+    },
+    {
+      "address_key": "0xbb3c6d28def21b6297016622a57a0b05015e3ad2",
+      "token_symbol": "PEPE",
+      "as_of_date": "2026-06-02 00:00:00.000 UTC",
+      "profile_label": "待定观察型",
+      "risk_note": "当前浮亏约16.7%，且持有时间较短，尚未形成明确的行为模式。",
+      "summary": "该地址在46天内净流入约20.2万美元，平均买入价高于当前价格，处于浮亏状态。由于持有时间较短且未观察到持续建仓或分发行为，暂无法判断其交易风格。",
+      "generation_status": "success",
+      "error_code": null
+    },
+    {
+      "address_key": "0x4a4aaa0155237881fbd5c34bfae16e985a7b068d",
+      "token_symbol": "PEPE",
+      "as_of_date": "2026-06-02 00:00:00.000 UTC",
+      "profile_label": "早期埋伏型",
+      "risk_note": "当前浮亏约15%，若价格持续下行，仓位可能面临较大回撤风险。",
+      "summary": "该地址在PEPE上线早期（4月18日）即首次买入，持有45天，净流入约15.4万美元，当前仓位价值约15.7万美元，呈现早期建仓、持续持有的行为特征。",
+      "generation_status": "success",
+      "error_code": null
+    },
+    {
+      "address_key": "0xbeb4dc79a3351f4e707bff53dcb42d36cf764b02",
+      "token_symbol": "PEPE",
+      "as_of_date": "2026-06-01 00:00:00.000 UTC",
+      "profile_label": "早期埋伏型",
+      "risk_note": "当前浮亏约12.3%，若价格持续下行可能面临较大回撤。",
+      "summary": "该地址于2026年4月18日首次买入PEPE，持有约44天，净流入16.3万美元，当前仓位价值15.3万美元，呈现早期建仓后持续持有的行为特征。",
+      "generation_status": "success",
+      "error_code": null
+    },
+    {
+      "address_key": "0x25d887ce7a35172c62febfd67a1856f20faebb00",
+      "token_symbol": "PEPE",
+      "as_of_date": "2026-05-30 00:00:00.000 UTC",
+      "profile_label": "深度持有型",
+      "risk_note": "当前浮亏约12.7%，且持有期间价格持续低于平均买入价，存在进一步回撤风险。",
+      "summary": "该地址在39天前首次买入PEPE，持有期间净流入约17.3万美元，当前仓位价值约15万美元，呈现持续建仓并长期持有的行为特征，属于深度持有型地址。",
+      "generation_status": "success",
+      "error_code": null
+    },
+    {
+      "address_key": "0x0529ea5885702715e83923c59746ae8734c553b7",
+      "token_symbol": "PEPE",
+      "as_of_date": "2026-06-01 00:00:00.000 UTC",
+      "profile_label": "待定观察型",
+      "risk_note": "持仓时间较短且当前处于浮亏状态，尚未形成明确趋势。",
+      "summary": "该地址在PEPE上持续净流入约14.6万美元，持有44天，但当前浮亏约11.5%，活跃天数较少，行为模式尚不清晰，建议继续观察。",
+      "generation_status": "success",
+      "error_code": null
+    },
+    {
+      "address_key": "0x40d658c7769709ec93d3433dc063b9e4a46433be",
+      "token_symbol": "PEPE",
+      "as_of_date": "2026-06-01 00:00:00.000 UTC",
+      "profile_label": "深度持有型",
+      "risk_note": "当前浮亏约13.6%，若价格持续下行，仓位价值将进一步缩水。",
+      "summary": "该地址自2026年4月19日开始建仓PEPE，持有43天，期间净流入约15.8万美元，当前仓位价值约14.7万美元，呈现持续持有且未明显减仓的行为特征。",
+      "generation_status": "success",
+      "error_code": null
+    },
+    {
+      "address_key": "0x91dca37856240e5e1906222ec79278b16420dc92",
+      "token_symbol": "PEPE",
+      "as_of_date": "2026-06-01 00:00:00.000 UTC",
+      "profile_label": "早期埋伏型",
+      "risk_note": "当前浮亏约13.9%，若价格持续下行，仓位可能面临进一步回撤。",
+      "summary": "该地址于2026年4月18日首次买入PEPE，持有约44天，累计净流入约13万美元，建仓时间较早且仓位集中。当前价格低于平均买入价，处于浮亏状态，暂无明显分发行为，呈现早期埋伏特征。",
+      "generation_status": "success",
+      "error_code": null
+    },
+    {
+      "address_key": "0xd2dd7b597fd2435b6db61ddf48544fd931e6869f",
+      "token_symbol": "PEPE",
+      "as_of_date": "2026-06-01 00:00:00.000 UTC",
+      "profile_label": "早期埋伏型",
+      "risk_note": "当前浮亏约17%，若价格持续下行，仓位价值将进一步缩水。",
+      "summary": "该地址于2026年4月22日首次买入PEPE，持有约40天，期间净流入约17.7万美元，建仓均价低于当前市价，属于早期建仓行为。目前处于浮亏状态，但仓位尚未出现明显减持迹象。",
+      "generation_status": "success",
+      "error_code": null
+    },
+    {
+      "address_key": "0x18e226459ccf0eec276514a4fd3b226d8961e4d1",
+      "token_symbol": "PEPE",
+      "as_of_date": "2026-05-23 00:00:00.000 UTC",
+      "profile_label": "深度持有型",
+      "risk_note": "当前浮亏约17.2%，且持有周期较长，若价格持续下行可能面临更大回撤。",
+      "summary": "该地址在约35天前首次买入PEPE，持有期间未出现明显卖出行为，当前仓位价值约12万美元，呈现深度持有特征。",
+      "generation_status": "success",
+      "error_code": null
+    },
+    {
+      "address_key": "0x6fe39f2831caf58529779efdb73341aa64df50ab",
+      "token_symbol": "PEPE",
+      "as_of_date": "2026-05-31 00:00:00.000 UTC",
+      "profile_label": "深度持有型",
+      "risk_note": "当前浮亏约12.9%，且持仓时间较长，若价格持续下行，浮亏可能进一步扩大。",
+      "summary": "该地址于2026年4月20日首次买入PEPE，持有约41天，期间净流入约13.4万美元，当前持仓价值约11.8万美元，呈现深度持有特征。",
+      "generation_status": "success",
+      "error_code": null
+    },
+    {
+      "address_key": "0xb51bf9029d778899d42e96ebcdc0498bd061006d",
+      "token_symbol": "PEPE",
+      "as_of_date": "2026-06-01 00:00:00.000 UTC",
+      "profile_label": "深度持有型",
+      "risk_note": "当前浮亏约13%，若价格持续下行，仓位价值将进一步缩水。",
+      "summary": "该地址于2026年4月20日首次买入PEPE，持有约42天，期间净流入约12.5万美元，当前仓位价值约10.5万美元，呈现持续建仓并持有的行为特征。",
+      "generation_status": "success",
+      "error_code": null
+    }
+  ],
+  "errors": []
+}

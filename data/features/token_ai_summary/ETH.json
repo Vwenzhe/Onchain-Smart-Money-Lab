@@ -1,0 +1,240 @@
+{
+  "dataset_name": "token_ai_summary",
+  "token_symbol": "ETH",
+  "token_name": "Ether",
+  "generated_at": "2026-06-02T07:06:11.623340+00:00",
+  "model_provider": "deepseek",
+  "model_name": "deepseek-chat",
+  "generation_status": "success",
+  "error_code": null,
+  "source_datasets": {
+    "token_overview_daily": {
+      "dataset_key": "token_overview_daily",
+      "storage_scope": "processed",
+      "token_symbol": "ETH"
+    },
+    "token_pnl_distribution": {
+      "dataset_key": "token_pnl_distribution",
+      "storage_scope": "processed",
+      "token_symbol": "ETH"
+    },
+    "address_feature_snapshot": {
+      "dataset_key": "address_feature_snapshot",
+      "storage_scope": "processed",
+      "token_symbol": "ETH"
+    },
+    "token_prices_latest": {
+      "dataset_key": "token_prices_latest",
+      "storage_scope": "features",
+      "token_symbol": null
+    }
+  },
+  "input_snapshot": {
+    "token_symbol": "ETH",
+    "token_name": "Ether",
+    "chain_name": "ethereum",
+    "overview_as_of_date": "2026-06-02 00:00:00.000 UTC",
+    "price_cache_generated_at": "2026-06-02T06:47:33.504148Z",
+    "price_cache_last_updated_at": "2026-06-02T06:47:31Z",
+    "latest_price_usd": 1982.08,
+    "snapshot_price_usd": 1991.9763636363634,
+    "price_change_vs_snapshot_pct": -0.004968112984181016,
+    "derived_metrics": {
+      "top_position_concentration": 0.691959353220628,
+      "profitable_address_share": 0.0017730496453900709,
+      "dominant_pnl_bucket": "loss",
+      "recent_3row_net_flow_usd": 1315535200.4579215,
+      "previous_3row_net_flow_usd": 1601574098.230044,
+      "recent_address_count_delta": -148,
+      "total_position_value_usd": 450304746.4132055,
+      "total_unrealized_pnl_usd": -52190664.60230999,
+      "avg_buy_price_usd_weighted": 2209.639740850586,
+      "price_vs_avg_cost_pct": -0.10298499644244649
+    },
+    "preliminary_analysis": {
+      "structure_stage_hint": "扩散建仓",
+      "driver_type_hint": "混合驱动",
+      "primary_risk_hint": "成本带脆弱风险",
+      "drill_down_view_hint": "值得继续下钻",
+      "drill_down_focus_hint": "第三层头部地址仓位明细与画像摘要",
+      "dominant_pnl_bucket_hint": "loss"
+    },
+    "latest_overview": {
+      "candidate_address_count": 209,
+      "eligible_address_count": 1051,
+      "candidate_net_flow_usd": 406604715.4151213,
+      "candidate_avg_net_flow_usd": 1945477.1072493843,
+      "candidate_net_position_token": 180588.43191059507,
+      "token_price_usd": 1991.9763636363634
+    },
+    "recent_overview": [
+      {
+        "as_of_date": "2026-06-02 00:00:00.000 UTC",
+        "candidate_address_count": 209,
+        "candidate_net_flow_usd": 406604715.4151213,
+        "candidate_net_position_token": 180588.43191059507,
+        "token_price_usd": 1991.9763636363634
+      },
+      {
+        "as_of_date": "2026-06-01 00:00:00.000 UTC",
+        "candidate_address_count": 349,
+        "candidate_net_flow_usd": 440329821.1923647,
+        "candidate_net_position_token": 192411.1633453265,
+        "token_price_usd": 1989.291631944444
+      },
+      {
+        "as_of_date": "2026-05-31 00:00:00.000 UTC",
+        "candidate_address_count": 353,
+        "candidate_net_flow_usd": 468600663.85043544,
+        "candidate_net_position_token": 206421.36002218415,
+        "token_price_usd": 2016.634826388888
+      },
+      {
+        "as_of_date": "2026-05-30 00:00:00.000 UTC",
+        "candidate_address_count": 323,
+        "candidate_net_flow_usd": 479097796.05585796,
+        "candidate_net_position_token": 212935.3071000005,
+        "token_price_usd": 2018.4274305555562
+      },
+      {
+        "as_of_date": "2026-05-29 00:00:00.000 UTC",
+        "candidate_address_count": 339,
+        "candidate_net_flow_usd": 613304480.8628184,
+        "candidate_net_position_token": 278933.10072565876,
+        "token_price_usd": 2010.6469444444383
+      },
+      {
+        "as_of_date": "2026-05-28 00:00:00.000 UTC",
+        "candidate_address_count": 365,
+        "candidate_net_flow_usd": 509171821.31136745,
+        "candidate_net_position_token": 226818.59179282462,
+        "token_price_usd": 1998.6426388888892
+      },
+      {
+        "as_of_date": "2026-05-27 00:00:00.000 UTC",
+        "candidate_address_count": 357,
+        "candidate_net_flow_usd": 421976149.71463746,
+        "candidate_net_position_token": 182594.4872119769,
+        "token_price_usd": 2064.847812499999
+      }
+    ],
+    "pnl_distribution": [
+      {
+        "pnl_bucket": "loss",
+        "address_count": 564,
+        "avg_unrealized_pnl_pct": -0.11405143172631299,
+        "median_unrealized_pnl_pct": -0.1179956151396225,
+        "total_position_value_usd": 450706160.1061267,
+        "total_unrealized_pnl_usd": -51794243.819380194,
+        "avg_hold_days": 41.02836879432624
+      },
+      {
+        "pnl_bucket": "0_10_pct",
+        "address_count": 1,
+        "avg_unrealized_pnl_pct": 0.008927594566031918,
+        "median_unrealized_pnl_pct": 0.008927594566031918,
+        "total_position_value_usd": 11746.34831914044,
+        "total_unrealized_pnl_usd": 103.93871273763943,
+        "avg_hold_days": 45.0
+      },
+      {
+        "pnl_bucket": "10_30_pct",
+        "address_count": 0,
+        "avg_unrealized_pnl_pct": 0.0,
+        "median_unrealized_pnl_pct": 0.0,
+        "total_position_value_usd": 0.0,
+        "total_unrealized_pnl_usd": 0.0,
+        "avg_hold_days": 0.0
+      },
+      {
+        "pnl_bucket": "30_60_pct",
+        "address_count": 0,
+        "avg_unrealized_pnl_pct": 0.0,
+        "median_unrealized_pnl_pct": 0.0,
+        "total_position_value_usd": 0.0,
+        "total_unrealized_pnl_usd": 0.0,
+        "avg_hold_days": 0.0
+      },
+      {
+        "pnl_bucket": "60_pct_plus",
+        "address_count": 0,
+        "avg_unrealized_pnl_pct": 0.0,
+        "median_unrealized_pnl_pct": 0.0,
+        "total_position_value_usd": 0.0,
+        "total_unrealized_pnl_usd": 0.0,
+        "avg_hold_days": 0.0
+      }
+    ],
+    "top_positions": [
+      {
+        "address_key": "0x59cd1c87501baa753d0b5b5ab5d8416a45cd71db",
+        "as_of_date": "2026-06-02 00:00:00.000 UTC",
+        "active_days": 46,
+        "hold_days_est": 45,
+        "net_flow_usd": 195875536.9251122,
+        "position_value_usd": 173517073.83604103,
+        "unrealized_pnl_pct": -0.12530082202461595
+      },
+      {
+        "address_key": "0xf04a5cc80b1e94c69b48f5ee68a08cd2f09a7c3e",
+        "as_of_date": "2026-05-29 00:00:00.000 UTC",
+        "active_days": 28,
+        "hold_days_est": 41,
+        "net_flow_usd": 55903760.43655771,
+        "position_value_usd": 55928505.86748181,
+        "unrealized_pnl_pct": -0.009590584516899316
+      },
+      {
+        "address_key": "0x4e68ccd3e89f51c3074ca5072bbac773960dfa36",
+        "as_of_date": "2026-06-02 00:00:00.000 UTC",
+        "active_days": 46,
+        "hold_days_est": 45,
+        "net_flow_usd": 36169044.502813116,
+        "position_value_usd": 33435868.93634326,
+        "unrealized_pnl_pct": -0.10050832284122609
+      },
+      {
+        "address_key": "0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640",
+        "as_of_date": "2026-06-02 00:00:00.000 UTC",
+        "active_days": 46,
+        "hold_days_est": 45,
+        "net_flow_usd": 33334772.72369648,
+        "position_value_usd": 32105125.959005184,
+        "unrealized_pnl_pct": -0.08597959796241744
+      },
+      {
+        "address_key": "0x3afdc9bca9213a35503b077a6072f3d0d5ab0840",
+        "as_of_date": "2026-06-01 00:00:00.000 UTC",
+        "active_days": 44,
+        "hold_days_est": 44,
+        "net_flow_usd": 19235683.181514684,
+        "position_value_usd": 16606006.481389293,
+        "unrealized_pnl_pct": -0.12405144498275891
+      }
+    ],
+    "top_position_concentration": 0.691959353220628,
+    "total_position_value_usd": 450304746.4132055,
+    "snapshot_gap_days": 0.0
+  },
+  "analysis": {
+    "trend_summary": "ETH 价格在 1982 美元附近窄幅整理，较快照价微跌 0.5%。候选地址净流入规模仍处高位，但近三日净流入较前一期略有回落。",
+    "market_context": "候选地址数量近三日持续下降，但净流入绝对值仍超 4 亿美元。整体仓位处于浮亏状态，平均持仓成本约 2210 美元，当前价格低于成本约 10.3%。",
+    "event_attribution": "当前价格波动更接近前期持续净流入后的整理阶段。近三日净流入虽较前一期有所回落，但绝对规模仍大，且价格未出现明显下跌，更反映增量资金仍在承接而非集中兑现。",
+    "risk_warning": "当前价格低于平均持仓成本约 10.3%，成本带脆弱性较高。候选地址数量连续下降，净流入持续性仍需继续观察。快照时点与价格缓存时间基本一致，样本时效风险较低。",
+    "confidence": "medium",
+    "research_conclusion": {
+      "headline": "ETH 处于扩散建仓阶段，增量资金持续流入但成本带脆弱性偏高，值得继续下钻头部地址。",
+      "structure_stage": "扩散建仓",
+      "structure_stage_evidence": "候选地址净流入连续多日维持高位，近三日净流入超 13 亿美元，且价格未出现明显上涨，更接近资金在相对低位持续建仓。",
+      "driver_type": "混合驱动",
+      "driver_evidence": "近三日净流入规模仍大，但较前一期有所回落，同时整体仓位处于浮亏状态，说明既有增量流入，也有存量持仓的浮亏压力，属于混合驱动。",
+      "primary_risk": "成本带脆弱风险",
+      "risk_evidence": "当前价格 1982 美元低于加权平均买入成本 2210 美元约 10.3%，且盈利地址占比仅 0.18%，绝大多数地址处于浮亏状态，成本带支撑偏弱。",
+      "drill_down_view": "值得继续下钻",
+      "drill_down_focus": "第三层头部地址仓位明细与画像摘要",
+      "drill_down_evidence": "前五大地址持仓集中度约 69.2%，且其中多个地址处于浮亏状态，下钻可评估其后续行为对价格结构的影响。",
+      "evidence_strength": "中",
+      "main_uncertainty": "当前快照仅覆盖 209 个候选地址，样本量有限，且净流入的持续性尚未得到更长时间窗口的验证。"
+    }
+  }
+}
