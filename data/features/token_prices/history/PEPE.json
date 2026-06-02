@@ -2,8 +2,8 @@
   "dataset_name": "token_price_history",
   "source": "coingecko",
   "token_symbol": "PEPE",
-  "generated_at": "2026-06-02T14:58:40.521361Z",
-  "row_count": 7,
+  "generated_at": "2026-06-02T18:50:20.148406Z",
+  "row_count": 8,
   "rows": [
     {
       "bucket_start_at": "2026-05-31T09:00:00Z",
@@ -60,6 +60,14 @@
       "price_usd": 3.24e-06,
       "market_cap_usd": 1364609462.5709047,
       "price_change_24h_pct": -2.7281413129836682
+    },
+    {
+      "bucket_start_at": "2026-06-02T18:30:00Z",
+      "queried_at": "2026-06-02T18:50:20.148406Z",
+      "coingecko_last_updated_at": "2026-06-02T18:50:02Z",
+      "price_usd": 3.19e-06,
+      "market_cap_usd": 1341215334.7901802,
+      "price_change_24h_pct": -6.554858923057237
     }
   ]
 }
