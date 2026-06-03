@@ -1,18 +1,18 @@
 {
-  "execution_id": "01KT3GND3KVB8GQMD4S1S2VXSE",
+  "execution_id": "01KT64582ABF8M1R6WF4RGRM9G",
   "query_id": 7607559,
   "is_execution_finished": true,
   "state": "QUERY_STATE_COMPLETED",
-  "submitted_at": "2026-06-02T06:34:46.259731Z",
-  "expires_at": "2026-08-31T06:35:14.869209Z",
-  "execution_started_at": "2026-06-02T06:34:49.926234Z",
-  "execution_ended_at": "2026-06-02T06:35:14.869199Z",
+  "submitted_at": "2026-06-03T06:53:57.195172Z",
+  "expires_at": "2026-09-01T06:54:26.032616Z",
+  "execution_started_at": "2026-06-03T06:54:00.867928Z",
+  "execution_ended_at": "2026-06-03T06:54:26.032606Z",
   "result": {
     "rows": [
       {
         "address_count": 0,
         "address_share": "0.00000000000000000",
-        "as_of_date": "2026-06-02 00:00:00.000 UTC",
+        "as_of_date": "2026-06-03 00:00:00.000 UTC",
         "avg_hold_days": 0,
         "avg_unrealized_pnl_pct": 0,
         "chain_name": "ethereum",
@@ -26,53 +26,53 @@
       },
       {
         "address_count": 1,
-        "address_share": "0.05882352941176471",
-        "as_of_date": "2026-06-02 00:00:00.000 UTC",
+        "address_share": "0.05555555555555556",
+        "as_of_date": "2026-06-03 00:00:00.000 UTC",
         "avg_hold_days": 45,
-        "avg_unrealized_pnl_pct": 0.09741949067709128,
+        "avg_unrealized_pnl_pct": 0.05041613745922224,
         "chain_name": "ethereum",
-        "median_unrealized_pnl_pct": 0.09741949067709128,
+        "median_unrealized_pnl_pct": 0.05041613745922224,
         "pnl_bucket": "0_10_pct",
         "pnl_bucket_order": 2,
         "token_name": "Fetch.ai",
         "token_symbol": "FET",
-        "total_position_value_usd": 635576.414778352,
-        "total_unrealized_pnl_usd": 56421.02326420008
+        "total_position_value_usd": 675466.679295573,
+        "total_unrealized_pnl_usd": 32419.93314655451
       },
       {
         "address_count": 16,
-        "address_share": "0.94117647058823529",
-        "as_of_date": "2026-06-02 00:00:00.000 UTC",
-        "avg_hold_days": 41.75,
-        "avg_unrealized_pnl_pct": 0.20450364259858667,
+        "address_share": "0.88888888888888889",
+        "as_of_date": "2026-06-03 00:00:00.000 UTC",
+        "avg_hold_days": 42.4375,
+        "avg_unrealized_pnl_pct": 0.1756646846979542,
         "chain_name": "ethereum",
-        "median_unrealized_pnl_pct": 0.19363033803638674,
+        "median_unrealized_pnl_pct": 0.16768541547696406,
         "pnl_bucket": "10_30_pct",
         "pnl_bucket_order": 3,
         "token_name": "Fetch.ai",
         "token_symbol": "FET",
-        "total_position_value_usd": 14962110.017382849,
-        "total_unrealized_pnl_usd": 2612959.74543518
+        "total_position_value_usd": 14654421.525956986,
+        "total_unrealized_pnl_usd": 2280432.4239916853
       },
       {
         "address_count": 1,
-        "address_share": "0.05882352941176471",
-        "as_of_date": "2026-06-02 00:00:00.000 UTC",
+        "address_share": "0.05555555555555556",
+        "as_of_date": "2026-06-03 00:00:00.000 UTC",
         "avg_hold_days": 5,
-        "avg_unrealized_pnl_pct": 0.3589981716708803,
+        "avg_unrealized_pnl_pct": 0.33277232564222115,
         "chain_name": "ethereum",
-        "median_unrealized_pnl_pct": 0.3589981716708803,
+        "median_unrealized_pnl_pct": 0.33277232564222115,
         "pnl_bucket": "30_60_pct",
         "pnl_bucket_order": 4,
         "token_name": "Fetch.ai",
         "token_symbol": "FET",
-        "total_position_value_usd": 312208.524361885,
-        "total_unrealized_pnl_usd": 82474.20177775196
+        "total_position_value_usd": 307106.4963354933,
+        "total_unrealized_pnl_usd": 76679.67066779471
       },
       {
         "address_count": 0,
         "address_share": "0.00000000000000000",
-        "as_of_date": "2026-06-02 00:00:00.000 UTC",
+        "as_of_date": "2026-06-03 00:00:00.000 UTC",
         "avg_hold_days": 0,
         "avg_unrealized_pnl_pct": 0,
         "chain_name": "ethereum",
@@ -117,12 +117,12 @@
         "double"
       ],
       "row_count": 5,
-      "result_set_bytes": 976,
+      "result_set_bytes": 982,
       "total_row_count": 5,
       "total_result_set_bytes": 516,
       "datapoint_count": 65,
-      "pending_time_millis": 3666,
-      "execution_time_millis": 24942
+      "pending_time_millis": 3672,
+      "execution_time_millis": 25164
     }
   }
 }

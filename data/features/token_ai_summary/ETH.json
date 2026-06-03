@@ -2,7 +2,7 @@
   "dataset_name": "token_ai_summary",
   "token_symbol": "ETH",
   "token_name": "Ether",
-  "generated_at": "2026-06-02T06:57:00.902422+00:00",
+  "generated_at": "2026-06-03T07:03:44.300982+00:00",
   "model_provider": "deepseek",
   "model_name": "deepseek-chat",
   "generation_status": "success",
@@ -33,23 +33,23 @@
     "token_symbol": "ETH",
     "token_name": "Ether",
     "chain_name": "ethereum",
-    "overview_as_of_date": "2026-06-02 00:00:00.000 UTC",
-    "price_cache_generated_at": "2026-06-02T06:39:44.424923Z",
-    "price_cache_last_updated_at": "2026-06-02T06:39:42Z",
-    "latest_price_usd": 1982.67,
-    "snapshot_price_usd": 1992.1321052631572,
-    "price_change_vs_snapshot_pct": -0.004749737850295425,
+    "overview_as_of_date": "2026-06-03 00:00:00.000 UTC",
+    "price_cache_generated_at": "2026-06-03T07:00:18.187931Z",
+    "price_cache_last_updated_at": "2026-06-03T07:00:18Z",
+    "latest_price_usd": 1869.18,
+    "snapshot_price_usd": 1855.6706249999997,
+    "price_change_vs_snapshot_pct": 0.007280050035819433,
     "derived_metrics": {
-      "top_position_concentration": 0.6919660220483901,
-      "profitable_address_share": 0.0017730496453900709,
+      "top_position_concentration": 0.81903070839972,
+      "profitable_address_share": 0.0,
       "dominant_pnl_bucket": "loss",
-      "recent_3row_net_flow_usd": 1315316105.9716663,
-      "previous_3row_net_flow_usd": 1601528238.9982247,
-      "recent_address_count_delta": -150,
-      "total_position_value_usd": 450211061.28236765,
-      "total_unrealized_pnl_usd": -52290909.89083183,
-      "avg_buy_price_usd_weighted": 2209.6484580314695,
-      "price_vs_avg_cost_pct": -0.10272152441555338
+      "recent_3row_net_flow_usd": 3952354748.271018,
+      "previous_3row_net_flow_usd": 3960224815.9793434,
+      "recent_address_count_delta": -107,
+      "total_position_value_usd": 1125900218.7334244,
+      "total_unrealized_pnl_usd": -188753467.21285272,
+      "avg_buy_price_usd_weighted": 2187.924728321351,
+      "price_vs_avg_cost_pct": -0.14568358965708222
     },
     "preliminary_analysis": {
       "structure_stage_hint": "扩散建仓",
@@ -60,82 +60,82 @@
       "dominant_pnl_bucket_hint": "loss"
     },
     "latest_overview": {
-      "candidate_address_count": 207,
-      "eligible_address_count": 1049,
-      "candidate_net_flow_usd": 406532286.1805604,
-      "candidate_avg_net_flow_usd": 1963924.0878287943,
-      "candidate_net_position_token": 180574.85214748874,
-      "token_price_usd": 1992.1321052631572
+      "candidate_address_count": 233,
+      "eligible_address_count": 1200,
+      "candidate_net_flow_usd": 1319908831.5841281,
+      "candidate_avg_net_flow_usd": 5664844.770747331,
+      "candidate_net_position_token": 592188.3950109447,
+      "token_price_usd": 1855.6706249999997
     },
     "recent_overview": [
       {
+        "as_of_date": "2026-06-03 00:00:00.000 UTC",
+        "candidate_address_count": 233,
+        "candidate_net_flow_usd": 1319908831.5841281,
+        "candidate_net_position_token": 592188.3950109447,
+        "token_price_usd": 1855.6706249999997
+      },
+      {
         "as_of_date": "2026-06-02 00:00:00.000 UTC",
-        "candidate_address_count": 207,
-        "candidate_net_flow_usd": 406532286.1805604,
-        "candidate_net_position_token": 180574.85214748874,
-        "token_price_usd": 1992.1321052631572
+        "candidate_address_count": 343,
+        "candidate_net_flow_usd": 1343626174.4100428,
+        "candidate_net_position_token": 603150.5068032023,
+        "token_price_usd": 1952.5854861111118
       },
       {
         "as_of_date": "2026-06-01 00:00:00.000 UTC",
-        "candidate_address_count": 348,
-        "candidate_net_flow_usd": 440269429.228335,
-        "candidate_net_position_token": 192402.1863726454,
-        "token_price_usd": 1989.2916319444444
+        "candidate_address_count": 331,
+        "candidate_net_flow_usd": 1288819742.276847,
+        "candidate_net_position_token": 576078.6751289301,
+        "token_price_usd": 1989.2916319444469
       },
       {
         "as_of_date": "2026-05-31 00:00:00.000 UTC",
-        "candidate_address_count": 349,
-        "candidate_net_flow_usd": 468514390.56277096,
-        "candidate_net_position_token": 206383.45633887014,
-        "token_price_usd": 2016.6348263888892
+        "candidate_address_count": 324,
+        "candidate_net_flow_usd": 1297900862.7500849,
+        "candidate_net_position_token": 580376.1341209675,
+        "token_price_usd": 2016.6348263888992
       },
       {
         "as_of_date": "2026-05-30 00:00:00.000 UTC",
-        "candidate_address_count": 322,
-        "candidate_net_flow_usd": 479084923.2478978,
-        "candidate_net_position_token": 212928.66102287444,
+        "candidate_address_count": 304,
+        "candidate_net_flow_usd": 1273915943.1877832,
+        "candidate_net_position_token": 569899.4576308392,
         "token_price_usd": 2018.427430555556
       },
       {
         "as_of_date": "2026-05-29 00:00:00.000 UTC",
-        "candidate_address_count": 340,
-        "candidate_net_flow_usd": 613303497.5366472,
-        "candidate_net_position_token": 278939.1420666568,
+        "candidate_address_count": 324,
+        "candidate_net_flow_usd": 1388408010.041475,
+        "candidate_net_position_token": 625694.0726834727,
         "token_price_usd": 2010.6469444444383
       },
       {
         "as_of_date": "2026-05-28 00:00:00.000 UTC",
-        "candidate_address_count": 365,
-        "candidate_net_flow_usd": 509139818.2136797,
-        "candidate_net_position_token": 226803.231312316,
+        "candidate_address_count": 340,
+        "candidate_net_flow_usd": 1277900104.3971624,
+        "candidate_net_position_token": 570627.0858809564,
         "token_price_usd": 1998.6426388888892
-      },
-      {
-        "as_of_date": "2026-05-27 00:00:00.000 UTC",
-        "candidate_address_count": 357,
-        "candidate_net_flow_usd": 421936048.555883,
-        "candidate_net_position_token": 182577.8539271175,
-        "token_price_usd": 2064.847812499999
       }
     ],
     "pnl_distribution": [
       {
         "pnl_bucket": "loss",
-        "address_count": 566,
-        "avg_unrealized_pnl_pct": -0.11505315841462949,
-        "median_unrealized_pnl_pct": -0.11902163420097184,
-        "total_position_value_usd": 450199904.1185448,
-        "total_unrealized_pnl_usd": -52290792.91510721,
-        "avg_hold_days": 40.987632508833926
+        "address_count": 561,
+        "avg_unrealized_pnl_pct": -0.14861782031300644,
+        "median_unrealized_pnl_pct": -0.15374526044384537,
+        "total_position_value_usd": 1125160333.4478166,
+        "total_unrealized_pnl_usd": -185152336.62203413,
+        "avg_hold_days": 40.93761140819964
       },
       {
         "pnl_bucket": "0_10_pct",
-        "address_count": 1,
-        "avg_unrealized_pnl_pct": 0.00781781442881089,
-        "median_unrealized_pnl_pct": 0.00781781442881089,
-        "total_position_value_usd": 11733.4278042088,
-        "total_unrealized_pnl_usd": 91.0181978070541,
-        "avg_hold_days": 45.0
+        "address_count": 0,
+        "avg_unrealized_pnl_pct": 0.0,
+        "median_unrealized_pnl_pct": 0.0,
+        "total_position_value_usd": 0.0,
+        "total_unrealized_pnl_usd": 0.0,
+        "avg_hold_days": 0.0
       },
       {
         "pnl_bucket": "10_30_pct",
@@ -167,74 +167,74 @@
     ],
     "top_positions": [
       {
-        "address_key": "0x59cd1c87501baa753d0b5b5ab5d8416a45cd71db",
-        "as_of_date": "2026-06-02 00:00:00.000 UTC",
+        "address_key": "0x4d5f47fa6a74757f35c14fd3a6ef8e3c9bc514e8",
+        "as_of_date": "2026-06-03 00:00:00.000 UTC",
         "active_days": 46,
         "hold_days_est": 45,
-        "net_flow_usd": 195875536.92511195,
-        "position_value_usd": 173479393.4994224,
-        "unrealized_pnl_pct": -0.12549076851654314
+        "net_flow_usd": 735445341.4255791,
+        "position_value_usd": 624909595.6016464,
+        "unrealized_pnl_pct": -0.1406891914954744
+      },
+      {
+        "address_key": "0x59cd1c87501baa753d0b5b5ab5d8416a45cd71db",
+        "as_of_date": "2026-06-03 00:00:00.000 UTC",
+        "active_days": 46,
+        "hold_days_est": 45,
+        "net_flow_usd": 212570485.19708157,
+        "position_value_usd": 170584597.1503561,
+        "unrealized_pnl_pct": -0.1675893712434941
       },
       {
         "address_key": "0xf04a5cc80b1e94c69b48f5ee68a08cd2f09a7c3e",
-        "as_of_date": "2026-05-29 00:00:00.000 UTC",
-        "active_days": 28,
-        "hold_days_est": 41,
-        "net_flow_usd": 55903760.43655772,
-        "position_value_usd": 55916360.636577435,
-        "unrealized_pnl_pct": -0.009805658223131127
-      },
-      {
-        "address_key": "0x4e68ccd3e89f51c3074ca5072bbac773960dfa36",
-        "as_of_date": "2026-06-02 00:00:00.000 UTC",
-        "active_days": 46,
-        "hold_days_est": 45,
-        "net_flow_usd": 36173567.02867678,
-        "position_value_usd": 33432321.7983403,
-        "unrealized_pnl_pct": -0.10070393867067906
+        "as_of_date": "2026-06-03 00:00:00.000 UTC",
+        "active_days": 29,
+        "hold_days_est": 43,
+        "net_flow_usd": 56660815.654509544,
+        "position_value_usd": 53821564.73350865,
+        "unrealized_pnl_pct": -0.05912074718107214
       },
       {
         "address_key": "0x88e6a0c2ddd26feeb64f039a2c41296fcb3f5640",
-        "as_of_date": "2026-06-02 00:00:00.000 UTC",
+        "as_of_date": "2026-06-03 00:00:00.000 UTC",
         "active_days": 46,
         "hold_days_est": 45,
-        "net_flow_usd": 33337362.64569635,
-        "position_value_usd": 32100280.841980685,
-        "unrealized_pnl_pct": -0.08618017368334387
+        "net_flow_usd": 48290857.89773429,
+        "position_value_usd": 43486926.204569615,
+        "unrealized_pnl_pct": -0.12668478781935555
       },
       {
-        "address_key": "0x3afdc9bca9213a35503b077a6072f3d0d5ab0840",
-        "as_of_date": "2026-06-01 00:00:00.000 UTC",
-        "active_days": 44,
-        "hold_days_est": 44,
-        "net_flow_usd": 19235683.181514684,
-        "position_value_usd": 16602400.381423134,
-        "unrealized_pnl_pct": -0.1242416627848625
+        "address_key": "0x4e68ccd3e89f51c3074ca5072bbac773960dfa36",
+        "as_of_date": "2026-06-03 00:00:00.000 UTC",
+        "active_days": 46,
+        "hold_days_est": 45,
+        "net_flow_usd": 34270459.63786699,
+        "position_value_usd": 29344170.046555746,
+        "unrealized_pnl_pct": -0.13757124612167643
       }
     ],
-    "top_position_concentration": 0.6919660220483901,
-    "total_position_value_usd": 450211061.28236765,
+    "top_position_concentration": 0.81903070839972,
+    "total_position_value_usd": 1125900218.7334244,
     "snapshot_gap_days": 0.0
   },
   "analysis": {
-    "trend_summary": "ETH 价格在 1982 美元附近窄幅整理，较快照价格微跌 0.47%。聪明钱候选地址近三日净流入约 13.15 亿美元，但流入规模较前一期有所回落。",
-    "market_context": "候选地址数量从 365 个持续下降至 207 个，但总持仓价值仍维持在 4.5 亿美元高位。PnL 分布显示 99.8% 的地址处于亏损状态，平均浮亏约 11.5%。",
-    "event_attribution": "当前价格波动更接近前期增量流入后的整理阶段。近三日净流入虽有回落但仍处高位，同时绝大多数地址处于浮亏，说明当前价格尚未充分反映前期建仓成本，波动更可能由存量持仓结构而非新事件驱动。",
-    "risk_warning": "当前价格（1982 美元）低于加权平均买入成本（2209 美元）约 10.3%，成本带脆弱风险突出。候选地址数量持续减少，净流入持续性仍需继续观察。",
+    "trend_summary": "ETH 价格小幅回升至 1869 美元，较快照价上涨约 0.7%，但整体仍低于加权平均成本价约 14.6%。",
+    "market_context": "候选地址数量从 343 降至 233，但净流入规模保持高位，近三日净流入约 39.5 亿美元，与前期基本持平。全部持仓地址处于浮亏状态，平均浮亏约 14.9%。",
+    "event_attribution": "当前价格波动更接近存量持仓成本带附近的整理，而非新增流入驱动。价格低于加权平均成本价约 14.6%，且全部地址处于浮亏，说明上涨动力不足，更可能体现为前期建仓后的成本带修复尝试。",
+    "risk_warning": "主要风险在于价格持续低于平均成本带，持仓结构脆弱。若价格无法有效回升，可能触发部分地址的被动减仓。此外，候选地址数量下降，需关注样本覆盖是否稳定。",
     "confidence": "medium",
     "research_conclusion": {
-      "headline": "ETH 处于扩散建仓阶段，增量流入与存量浮亏并存，成本带脆弱是主要风险。",
+      "headline": "ETH 处于成本带下方的扩散建仓阶段，全部地址浮亏，结构脆弱但净流入维持高位。",
       "structure_stage": "扩散建仓",
-      "structure_stage_evidence": "候选地址数量虽在下降，但近三日净流入仍超 13 亿美元，且头部地址持仓集中度约 69%，更接近资金向少数地址集中的扩散建仓特征。",
+      "structure_stage_evidence": "候选地址净流入持续高位，近三日净流入约 39.5 亿美元，且价格低于加权平均成本价 14.6%，更接近建仓而非兑现阶段。",
       "driver_type": "混合驱动",
-      "driver_evidence": "近三日净流入 13.15 亿美元，显示增量资金仍在入场；但 99.8% 地址处于浮亏，存量持仓的盈利压力尚未释放，当前更接近增量流入与存量浮亏共同作用的混合驱动。",
+      "driver_evidence": "净流入规模大且持续，体现增量流入特征；但全部地址浮亏，价格低于成本带，说明存量持仓的盈利效应尚未形成，当前更接近混合驱动。",
       "primary_risk": "成本带脆弱风险",
-      "risk_evidence": "当前价格 1982 美元低于加权平均买入成本 2209 美元约 10.3%，且 99.8% 地址处于亏损状态，成本带支撑脆弱，价格若继续下行可能触发更多被动调整。",
+      "risk_evidence": "价格 1869 美元低于加权平均成本价 2188 美元约 14.6%，全部地址处于浮亏状态，平均浮亏约 14.9%。若价格继续下行，持仓结构可能更脆弱。",
       "drill_down_view": "值得继续下钻",
       "drill_down_focus": "第三层头部地址仓位明细与画像摘要",
-      "drill_down_evidence": "头部 5 个地址持仓集中度约 69%，且其中 4 个地址均处于浮亏状态，下钻至第三层可进一步评估这些核心地址的持仓行为与潜在风险。",
+      "drill_down_evidence": "前五大地址持仓集中度高达 81.9%，且全部处于浮亏，其后续行为对价格结构影响较大，值得进一步分析其持仓细节与资金来源。",
       "evidence_strength": "中",
-      "main_uncertainty": "候选地址数量持续下降，可能反映样本口径变化或部分地址退出跟踪，当前结论基于快照数据，无法确认净流入的持续性及地址减少的真实原因。"
+      "main_uncertainty": "当前快照仅覆盖 233 个候选地址，样本量有限，且价格缓存时间与链上快照时间存在约 7 小时差异，可能影响成本带计算的精确性。"
     }
   }
 }

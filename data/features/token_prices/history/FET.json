@@ -2,8 +2,8 @@
   "dataset_name": "token_price_history",
   "source": "coingecko",
   "token_symbol": "FET",
-  "generated_at": "2026-06-02T06:39:44.424923Z",
-  "row_count": 5,
+  "generated_at": "2026-06-03T09:58:59.421119Z",
+  "row_count": 13,
   "rows": [
     {
       "bucket_start_at": "2026-05-31T09:00:00Z",
@@ -44,6 +44,70 @@
       "price_usd": 0.272085,
       "market_cap_usd": 613489480.7060413,
       "price_change_24h_pct": -1.0530557015552116
+    },
+    {
+      "bucket_start_at": "2026-06-02T10:30:00Z",
+      "queried_at": "2026-06-02T10:47:22.941712Z",
+      "coingecko_last_updated_at": "2026-06-02T10:47:05Z",
+      "price_usd": 0.269517,
+      "market_cap_usd": 609140573.2265345,
+      "price_change_24h_pct": -5.582558437843146
+    },
+    {
+      "bucket_start_at": "2026-06-02T14:30:00Z",
+      "queried_at": "2026-06-02T14:58:40.521361Z",
+      "coingecko_last_updated_at": "2026-06-02T14:58:33Z",
+      "price_usd": 0.271189,
+      "market_cap_usd": 610727864.0070307,
+      "price_change_24h_pct": 2.7120178971427924
+    },
+    {
+      "bucket_start_at": "2026-06-02T18:30:00Z",
+      "queried_at": "2026-06-02T18:50:20.148406Z",
+      "coingecko_last_updated_at": "2026-06-02T18:50:04Z",
+      "price_usd": 0.2556,
+      "market_cap_usd": 578175687.0543561,
+      "price_change_24h_pct": -7.232048985502606
+    },
+    {
+      "bucket_start_at": "2026-06-02T21:30:00Z",
+      "queried_at": "2026-06-02T21:53:37.002915Z",
+      "coingecko_last_updated_at": "2026-06-02T21:53:26Z",
+      "price_usd": 0.24912,
+      "market_cap_usd": 563117778.1975018,
+      "price_change_24h_pct": -8.318797616669714
+    },
+    {
+      "bucket_start_at": "2026-06-02T23:30:00Z",
+      "queried_at": "2026-06-02T23:52:26.452385Z",
+      "coingecko_last_updated_at": "2026-06-02T23:52:25Z",
+      "price_usd": 0.243059,
+      "market_cap_usd": 549189244.1026992,
+      "price_change_24h_pct": -11.691226026892052
+    },
+    {
+      "bucket_start_at": "2026-06-03T04:30:00Z",
+      "queried_at": "2026-06-03T04:51:18.554208Z",
+      "coingecko_last_updated_at": "2026-06-03T04:51:09Z",
+      "price_usd": 0.257982,
+      "market_cap_usd": 582557609.1151452,
+      "price_change_24h_pct": -6.213245026124237
+    },
+    {
+      "bucket_start_at": "2026-06-03T07:00:00Z",
+      "queried_at": "2026-06-03T07:00:18.187931Z",
+      "coingecko_last_updated_at": "2026-06-03T07:00:08Z",
+      "price_usd": 0.260427,
+      "market_cap_usd": 589598718.2460698,
+      "price_change_24h_pct": -4.668857250992941
+    },
+    {
+      "bucket_start_at": "2026-06-03T09:30:00Z",
+      "queried_at": "2026-06-03T09:58:59.421119Z",
+      "coingecko_last_updated_at": "2026-06-03T09:58:45Z",
+      "price_usd": 0.263548,
+      "market_cap_usd": 595511504.5889865,
+      "price_change_24h_pct": -1.4821907724928947
     }
   ]
 }
